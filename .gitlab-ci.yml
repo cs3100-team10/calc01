@@ -1,0 +1,7 @@
+stages:
+  - build
+
+make:
+  stage: build
+  script: "qmake && make"
+
