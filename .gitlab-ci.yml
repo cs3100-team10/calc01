@@ -3,5 +3,5 @@ stages:
 
 make:
   stage: build
-  script: "qmake && make"
+  script: "qmake && make all"
 
