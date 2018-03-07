@@ -17,6 +17,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void digitPressed();
+    void clearPressed();
+    void backPressed();
 };
 
 #endif // MAINWINDOW_H
