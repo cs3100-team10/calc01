@@ -17,6 +17,15 @@ public:
 
 private:
     Ui::scientificWindow *ui;
+
+private slots:
+    void digitPressed();
+    void clearPressed();
+    void backPressed();
+    void basicModePressed();
+    void parFuncPressed();
+    void radPressed();
+    void degPressed();
 };
 
 #endif // SCIENTIFICWINDOW_H

@@ -46,8 +46,6 @@ void MainWindow::digitPressed() {
     QString labelText = QString::number(labelNumber,'g',15); // 15 is the current double precision
 
     ui->label_screen->setText(labelText);
-
-
 }
 
 void MainWindow::clearPressed() {
@@ -73,4 +71,5 @@ void MainWindow::backPressed() {
 void MainWindow::sciModePressed() {
     scientificWindow *w = new scientificWindow();
     w->show();
+    this->close();
 }
