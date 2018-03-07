@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "scientific.h"
+#include "scientificwindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
