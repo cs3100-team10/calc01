@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "scientificwindow.h"
 
 //#include <QDebug>
 
@@ -25,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_clear,SIGNAL(released()),this,SLOT(clearPressed()));
 
     connect(ui->pushButton_back,SIGNAL(released()),this,SLOT(backPressed()));
+
+    connect(ui->pushButton_sciMode,SIGNAL(released()),this,SLOT(sciModePressed()));
 
 }
 
@@ -65,4 +68,9 @@ void MainWindow::backPressed() {
 
     ui->label_screen->setText(newText);
 
+}
+
+void MainWindow::sciModePressed() {
+    scientificWindow *w = new scientificWindow();
+    w->show();
 }

@@ -22,6 +22,7 @@ private slots:
     void digitPressed();
     void clearPressed();
     void backPressed();
+    void sciModePressed();
 };
 
 #endif // MAINWINDOW_H

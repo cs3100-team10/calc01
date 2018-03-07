@@ -11,9 +11,13 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = T10Calculator
 TEMPLATE = app
 
-SOURCES += src/main.cpp src/mainwindow.cpp
+SOURCES += src/main.cpp src/mainwindow.cpp \
+    src/scientificwindow.cpp
 
-HEADERS  += src/mainwindow.h
+HEADERS  += src/mainwindow.h \
+    src/scientificwindow.h
 
 FORMS    += src/mainwindow.ui \
-    src/scientific.ui
+    src/scientificwindow.ui
+
+DISTFILES +=
