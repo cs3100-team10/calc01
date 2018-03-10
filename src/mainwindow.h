@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "memstorage.cpp"
 #include <QMainWindow>
 
 namespace Ui {
@@ -14,6 +14,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    MemStorage mem;
 
 private:
     Ui::MainWindow *ui;
@@ -23,6 +24,9 @@ private slots:
     void clearPressed();
     void backPressed();
     void sciModePressed();
+    void upPressed();
+    void downPressed();
+    void equalsPressed();
 };
 
 #endif // MAINWINDOW_H

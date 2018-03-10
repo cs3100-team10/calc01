@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    MemStorage mem;
 
     connect(ui->pushButton_0zero,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_1one,SIGNAL(released()),this, SLOT(digitPressed()));
@@ -28,6 +29,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_back,SIGNAL(released()),this,SLOT(backPressed()));
 
     connect(ui->pushButton_sciMode,SIGNAL(released()),this,SLOT(sciModePressed()));
+
+    connect(ui->pushButton_up,SIGNAL(released()),this,SLOT(upPressed()));
+
+    connect(ui->pushButton_down,SIGNAL(released()),this,SLOT(downPressed()));
+
+    connect(ui->pushButton_equals,SIGNAL(released()),this,SLOT(equalsPressed()));
 
 }
 
@@ -72,4 +79,31 @@ void MainWindow::sciModePressed() {
     scientificWindow *w = new scientificWindow();
     w->show();
     this->close();
+}
+
+void MainWindow::upPressed() {
+    //check if end of the list
+    mem.it++;
+    ui->label_screen->setText((QString)*mem.it);
+}
+
+void MainWindow::downPressed() {
+    //check if end of te list
+
+    mem.it--;
+    ui->label_screen->setText((QString)*mem.it);
+    //how to go back to being able to input values???
+}
+
+void MainWindow::equalsPressed() {
+    QString currentText = ui->label_screen->text();
+    //if memory is empty add blank memory spot
+    /*if (mem.memory.size() < 1) {
+        QString emptyText = (QString)"";
+        mem.memory.push_back(emptyText);
+    }*/
+    //adds to memory
+    mem.memory.push_back(currentText);
+    //mem.updateIterators();
+    ui->label_screen->setText((QString)"");
 }

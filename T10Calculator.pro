@@ -12,7 +12,8 @@ TARGET = T10Calculator
 TEMPLATE = app
 
 SOURCES += src/main.cpp src/mainwindow.cpp \
-    src/scientificwindow.cpp
+    src/scientificwindow.cpp \
+    src/memstorage.cpp
 
 HEADERS  += src/mainwindow.h \
     src/scientificwindow.h
