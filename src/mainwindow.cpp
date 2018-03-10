@@ -83,14 +83,14 @@ void MainWindow::sciModePressed() {
 
 void MainWindow::upPressed() {
     //check if end of the list
-    mem.it++;
+    mem.it--;
     ui->label_screen->setText((QString)*mem.it);
 }
 
 void MainWindow::downPressed() {
     //check if end of te list
 
-    mem.it--;
+    mem.it++;
     ui->label_screen->setText((QString)*mem.it);
     //how to go back to being able to input values???
 }
@@ -104,6 +104,7 @@ void MainWindow::equalsPressed() {
     }*/
     //adds to memory
     mem.memory.push_back(currentText);
+    mem.it = mem.memory.end();
     //mem.updateIterators();
     ui->label_screen->setText((QString)"");
 }
