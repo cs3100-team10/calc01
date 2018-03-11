@@ -8,20 +8,22 @@ class MemStorage
     public:
         list<QString> memory;
         list<QString>::iterator it;
-        //list<QString>::iterator begin;
-        //list<QString>::iterator end;
+        int loc;
+        int size;
 
         //constructor
         MemStorage() {
             it = memory.end();
-            //begin = memory.begin();
-            //end = memory.end();
+            loc = 0;
+            size = 0;
         }
-        //update iterators
-        /*void updateIterators() {
-            begin = memory.begin();
-            end = memory.end();
-        }*/
+        //clear empty nodes
+        void clearEmpties() {
+            memory.remove("");
+            list<QString>::iterator begin = memory.begin();
+            list<QString>::iterator end = memory.end();
+            size = distance(begin, end);
+        }
 
     private:
 };

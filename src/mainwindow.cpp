@@ -82,29 +82,44 @@ void MainWindow::sciModePressed() {
 }
 
 void MainWindow::upPressed() {
+    mem.loc++;
     //check if end of the list
-    mem.it--;
+    if (mem.loc <= mem.size) {
+        mem.it--;
+        ui->label_screen->setText((QString)*mem.it);
+    } else {
+        //do nothing because top of memory
+        mem.loc--;
+    }
     ui->label_screen->setText((QString)*mem.it);
 }
 
 void MainWindow::downPressed() {
-    //check if end of te list
-
-    mem.it++;
+    mem.loc--;
+    //check if end of the list
+    if (mem.loc == 0) {
+        //if reaches bottom go to the input adds a blank space
+        QString emptyText = (QString)"";
+        mem.memory.push_back(emptyText);
+        mem.size++;
+        mem.it++;
+    } else if (mem.loc < 0) {
+        mem.loc++;
+    } else {
+        mem.it++;
+    }
     ui->label_screen->setText((QString)*mem.it);
-    //how to go back to being able to input values???
 }
 
 void MainWindow::equalsPressed() {
+    //removes empty node values if any exist
+    mem.clearEmpties();
     QString currentText = ui->label_screen->text();
-    //if memory is empty add blank memory spot
-    /*if (mem.memory.size() < 1) {
-        QString emptyText = (QString)"";
-        mem.memory.push_back(emptyText);
-    }*/
-    //adds to memory
-    mem.memory.push_back(currentText);
-    mem.it = mem.memory.end();
-    //mem.updateIterators();
+    //adds to memory if not blank
+    if (currentText != "") {
+        mem.memory.push_back(currentText);
+        mem.it = mem.memory.end();
+        mem.size++;
+    }
     ui->label_screen->setText((QString)"");
 }
