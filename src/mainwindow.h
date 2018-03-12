@@ -24,6 +24,7 @@ private slots:
     void clearPressed();
     void backPressed();
     void sciModePressed();
+    void helpPressed();
     void upPressed();
     void downPressed();
     void decimalPressed();

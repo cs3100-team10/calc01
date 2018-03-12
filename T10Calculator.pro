@@ -13,12 +13,18 @@ TEMPLATE = app
 
 SOURCES += src/main.cpp src/mainwindow.cpp \
     src/scientificwindow.cpp \
-    src/memStorage.cpp
+    src/memStorage.cpp \
+    src/helpdialogbasic.cpp \
+    src/helpdialogsci.cpp
 
 HEADERS  += src/mainwindow.h \
-    src/scientificwindow.h
+    src/scientificwindow.h \
+    src/helpdialogbasic.h \
+    src/helpdialogsci.h
 
 FORMS    += src/mainwindow.ui \
-    src/scientificwindow.ui
+    src/scientificwindow.ui \
+    src/helpdialogbasic.ui \
+    src/helpdialogsci.ui
 
 DISTFILES +=

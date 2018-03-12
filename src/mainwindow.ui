@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>450</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>30</y>
+      <y>100</y>
       <width>261</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -51,7 +51,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>100</y>
+      <y>160</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -93,7 +93,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>100</y>
+      <y>160</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -135,7 +135,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>100</y>
+      <y>160</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -177,7 +177,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>100</y>
+      <y>160</y>
       <width>60</width>
       <height>31</height>
      </rect>
@@ -219,7 +219,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>180</y>
+      <y>240</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -261,7 +261,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>180</y>
+      <y>240</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -303,7 +303,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>180</y>
+      <y>240</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -345,7 +345,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>180</y>
+      <y>240</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -387,7 +387,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>240</y>
+      <y>300</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -429,7 +429,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>240</y>
+      <y>300</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -471,7 +471,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>240</y>
+      <y>300</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -513,7 +513,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>240</y>
+      <y>300</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -555,7 +555,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>300</y>
+      <y>360</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -597,7 +597,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>300</y>
+      <y>360</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -639,7 +639,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>300</y>
+      <y>360</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -681,7 +681,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>300</y>
+      <y>360</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -723,7 +723,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>360</y>
+      <y>420</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -765,7 +765,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>360</y>
+      <y>420</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -807,7 +807,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>360</y>
+      <y>420</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -849,7 +849,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>360</y>
+      <y>420</y>
       <width>60</width>
       <height>60</height>
      </rect>
@@ -891,7 +891,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>130</y>
+      <y>190</y>
       <width>60</width>
       <height>31</height>
      </rect>
@@ -927,6 +927,48 @@ QPushButton:hover{
     </property>
     <property name="text">
      <string>↓</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_help">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>60</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color: #e8ebef;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    border-color: #758ca0;
+	margin: 1px;
+}
+QPushButton:pressed {
+    background-color: #388ed8;
+}
+QPushButton:hover{ 
+	background-color: #b5bfcc;
+	color: #374c5e;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Help</string>
     </property>
    </widget>
   </widget>

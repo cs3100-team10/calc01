@@ -1,13 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "scientificwindow.h"
+#include "helpdialogbasic.h"
 
 //#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+    QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     MemStorage mem;
 
@@ -27,40 +26,38 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_back,SIGNAL(released()),this,SLOT(backPressed()));
 
     connect(ui->pushButton_sciMode,SIGNAL(released()),this,SLOT(sciModePressed()));
+    connect(ui->pushButton_help,SIGNAL(released()),this,SLOT(helpPressed()));
 
     connect(ui->pushButton_up,SIGNAL(released()),this,SLOT(upPressed()));
 
     connect(ui->pushButton_down,SIGNAL(released()),this,SLOT(downPressed()));
 
     connect(ui->pushButton_equals,SIGNAL(released()),this,SLOT(equalsPressed()));
-
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
 void MainWindow::digitPressed() {
-    //qDebug() << "test";
-
     QPushButton *button = (QPushButton*)sender();
+    double buttonNumber = (button->text()).toDouble();
+    QString labelText;
 
-    double labelNumber = (ui->label_screen->text() + button->text()).toDouble();
+    QString buttonText = QString::number(buttonNumber,'g',15); // 15 is the current double precision
 
-    QString labelText = QString::number(labelNumber,'g',15); // 15 is the current double precision
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + button->text();
+    }
+    else {
+        labelText = button->text();
+    }
 
     ui->label_screen->setText(labelText);
 }
 
 void MainWindow::clearPressed() {
-    QString currentText = ui->label_screen->text();
-
-    //TO DO:
-    // add functionality to save what was currently on the screen before clearing it
-
-    ui->label_screen->setText((QString)"");
-
+    ui->label_screen->setText((QString)"0");
 }
 
 void MainWindow::backPressed() {
@@ -70,13 +67,18 @@ void MainWindow::backPressed() {
      QString newText = currentText;
 
     ui->label_screen->setText(newText);
-
 }
 
 void MainWindow::sciModePressed() {
     scientificWindow *w = new scientificWindow();
     w->show();
     this->close();
+}
+
+void MainWindow::helpPressed() {
+    helpDialogBasic *w = new helpDialogBasic();
+    w->show();
+    //this->close();
 }
 
 void MainWindow::upPressed() {
