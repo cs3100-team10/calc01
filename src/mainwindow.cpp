@@ -83,33 +83,13 @@ void MainWindow::helpPressed() {
 }
 
 void MainWindow::upPressed() {
-    mem.loc++;
-    //check if end of the list
-    if (mem.loc <= mem.size) {
-        mem.it--;
-        ui->label_screen->setText((QString)*mem.it);
-    } else {
-        //do nothing because top of memory
-        mem.loc--;
-    }
-    ui->label_screen->setText((QString)*mem.it);
+    QString str = mem.up();
+    ui->label_screen->setText(str);
 }
 
 void MainWindow::downPressed() {
-    mem.loc--;
-    //check if end of the list
-    if (mem.loc == 0) {
-        //if reaches bottom go to the input adds a blank space
-        QString emptyText = (QString)"";
-        mem.memory.push_back(emptyText);
-        mem.size++;
-        mem.it++;
-    } else if (mem.loc < 0) {
-        mem.loc++;
-    } else {
-        mem.it++;
-    }
-    ui->label_screen->setText((QString)*mem.it);
+    QString str = mem.down();
+    ui->label_screen->setText(str);
 }
 
 void MainWindow::decimalPressed() {
@@ -128,13 +108,10 @@ void MainWindow::decimalPressed() {
 
 void MainWindow::equalsPressed() {
     //removes empty node values if any exist
-    mem.clearEmpties();
     QString currentText = ui->label_screen->text();
     //adds to memory if not blank
     if (currentText != "") {
-        mem.memory.push_back(currentText);
-        mem.it = mem.memory.end();
-        mem.size++;
+        QString str = mem.push(currentText);
+        ui->label_screen->setText(str);
     }
-    ui->label_screen->setText((QString)"");
 }

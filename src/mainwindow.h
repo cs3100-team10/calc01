@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "memStorage.cpp"
 #include <QMainWindow>
+#include "memStorage.h"
 
 namespace Ui {
 class MainWindow;

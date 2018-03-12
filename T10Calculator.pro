@@ -19,6 +19,7 @@ SOURCES += src/main.cpp src/mainwindow.cpp \
 
 HEADERS  += src/mainwindow.h \
     src/scientificwindow.h \
+    src/memStorage.h \
     src/helpdialogbasic.h \
     src/helpdialogsci.h
 
