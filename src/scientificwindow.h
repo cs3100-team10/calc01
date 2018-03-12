@@ -24,8 +24,7 @@ private slots:
     void backPressed();
     void basicModePressed();
     void parFuncPressed();
-    void radPressed();
-    void degPressed();
+    void piPressed();
 };
 
 #endif // SCIENTIFICWINDOW_H

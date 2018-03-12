@@ -32,8 +32,7 @@ scientificWindow::scientificWindow(QWidget *parent) :
 
     connect(ui->pushButton_basicMode,SIGNAL(released()),this,SLOT(basicModePressed()));
 
-    connect(ui->radioButton_degrees,SIGNAL(pressed()),this,SLOT(degPressed()));
-    connect(ui->radioButton_radians,SIGNAL(pressed()),this,SLOT(radPressed()));
+    connect(ui->pushButton_pi,SIGNAL(released()),this,SLOT(piPressed()));
 }
 
 scientificWindow::~scientificWindow() {
@@ -97,10 +96,16 @@ void scientificWindow::basicModePressed() {
     this->close();
 }
 
-void scientificWindow::radPressed() {
-//    ui->radioButton_degrees->isDown();
-}
+void scientificWindow::piPressed() {
+    QString labelText;
+    QString piUnicode = QChar(0x03C0);
 
-void scientificWindow::degPressed() {
-  //  ui->radioButton_radians->!(isDown());
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + " " + piUnicode;
+    }
+    else {
+        labelText = piUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
 }
