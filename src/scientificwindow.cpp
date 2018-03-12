@@ -1,6 +1,7 @@
 #include "scientificwindow.h"
 #include "ui_scientificwindow.h"
 #include "mainwindow.h"
+#include "helpdialogsci.h"
 
 //#include <QDebug>
 
@@ -8,6 +9,8 @@ scientificWindow::scientificWindow(QWidget *parent) :
     QDialog(parent), ui(new Ui::scientificWindow) {
     ui->setupUi(this);
     ui->radioButton_radians->setChecked(true);
+    this->setWindowTitle("Scientific Calculator");
+    //this->statusBar()->setSizeGripEnabled(false);
 
     connect(ui->pushButton_0zero,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_1one,SIGNAL(released()),this, SLOT(digitPressed()));
@@ -34,6 +37,7 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_back,SIGNAL(released()),this,SLOT(backPressed()));
 
     connect(ui->pushButton_basicMode,SIGNAL(released()),this,SLOT(basicModePressed()));
+    connect(ui->pushButton_help,SIGNAL(released()),this,SLOT(helpPressed()));
 
     connect(ui->pushButton_pi,SIGNAL(released()),this,SLOT(piPressed()));
     connect(ui->pushButton_parLeft,SIGNAL(released()),this,SLOT(leftParPressed()));
@@ -51,19 +55,10 @@ scientificWindow::~scientificWindow() {
 
 void scientificWindow::digitPressed() {
     QPushButton *button = (QPushButton*)sender();
-
     double buttonNumber = (button->text()).toDouble();
+    QString labelText;
 
     QString buttonText = QString::number(buttonNumber,'g',15); // 15 is the current double precision
-
-    QString labelText = ui->label_screen->text() + buttonText;
-
-    ui->label_screen->setText(labelText);
-}
-
-void scientificWindow::parFuncPressed() {
-    QPushButton *button = (QPushButton*)sender();
-    QString labelText;
 
     if(ui->label_screen->text() != (QString)"0") {
         labelText = ui->label_screen->text() + button->text();
@@ -72,12 +67,10 @@ void scientificWindow::parFuncPressed() {
         labelText = button->text();
     }
 
-    ui->label_screen->setText(labelText + "(");
+    ui->label_screen->setText(labelText);
 }
 
 void scientificWindow::clearPressed() {
-    QString currentText = ui->label_screen->text();
-
     ui->label_screen->setText((QString)"0");
 }
 
@@ -95,6 +88,28 @@ void scientificWindow::basicModePressed() {
     w->show();
     this->close();
 }
+
+void scientificWindow::helpPressed() {
+    helpDialogSci *w = new helpDialogSci();
+    w->show();
+    //this->close();
+}
+
+void scientificWindow::parFuncPressed() {
+    QPushButton *button = (QPushButton*)sender();
+    QString labelText;
+
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + button->text();
+    }
+    else {
+        labelText = button->text();
+    }
+
+    ui->label_screen->setText(labelText + "(");
+}
+
+
 
 void scientificWindow::piPressed() {
     QString labelText;

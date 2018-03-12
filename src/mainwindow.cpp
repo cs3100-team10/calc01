@@ -8,6 +8,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    this->setWindowTitle("Basic Calculator");
     MemStorage mem;
 
     connect(ui->pushButton_0zero,SIGNAL(released()),this, SLOT(digitPressed()));
