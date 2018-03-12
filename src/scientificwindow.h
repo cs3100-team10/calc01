@@ -23,6 +23,7 @@ private slots:
     void clearPressed();
     void backPressed();
     void basicModePressed();
+    void helpPressed();
     void parFuncPressed();
     void piPressed();
     void leftParPressed();
