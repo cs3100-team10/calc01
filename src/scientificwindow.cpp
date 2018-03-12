@@ -33,6 +33,13 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_basicMode,SIGNAL(released()),this,SLOT(basicModePressed()));
 
     connect(ui->pushButton_pi,SIGNAL(released()),this,SLOT(piPressed()));
+
+    connect(ui->pushButton_parLeft,SIGNAL(released()),this,SLOT(leftParPressed()));
+    connect(ui->pushButton_parRight,SIGNAL(released()),this,SLOT(rightParPressed()));
+    connect(ui->pushButton_decimal,SIGNAL(released()),this,SLOT(decimalPressed()));
+    connect(ui->pushButton_sqrt,SIGNAL(released()),this,SLOT(sqrtPressed()));
+    connect(ui->pushButton_cbrt,SIGNAL(released()),this,SLOT(cbrtPressed()));
+    connect(ui->pushButton_power,SIGNAL(released()),this,SLOT(powerPressed()));
 }
 
 scientificWindow::~scientificWindow() {
@@ -40,13 +47,13 @@ scientificWindow::~scientificWindow() {
 }
 
 void scientificWindow::digitPressed() {
-    //qDebug() << "test";
-
     QPushButton *button = (QPushButton*)sender();
 
-    double labelNumber = (ui->label_screen->text() + button->text()).toDouble();
+    double buttonNumber = (button->text()).toDouble();
 
-    QString labelText = QString::number(labelNumber,'g',15); // 15 is the current double precision
+    QString buttonText = QString::number(buttonNumber,'g',15); // 15 is the current double precision
+
+    QString labelText = ui->label_screen->text() + buttonText;
 
     ui->label_screen->setText(labelText);
 }
@@ -58,7 +65,7 @@ void scientificWindow::parFuncPressed() {
     //qDebug << ui->label_screen->text();
 
     if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + " " + button->text();
+        labelText = ui->label_screen->text() + button->text();
     }
     else {
         labelText = button->text();
@@ -101,10 +108,94 @@ void scientificWindow::piPressed() {
     QString piUnicode = QChar(0x03C0);
 
     if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + " " + piUnicode;
+        labelText = ui->label_screen->text() + piUnicode;
     }
     else {
         labelText = piUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::leftParPressed() {
+    QString labelText;
+    QString leftParUnicode = QChar(0x0028);
+
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + leftParUnicode;
+    }
+    else {
+        labelText = leftParUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::rightParPressed() {
+    QString labelText;
+    QString rightParUnicode = QChar(0x0029);
+
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + rightParUnicode;
+    }
+    else {
+        labelText = rightParUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::decimalPressed() {
+    QString labelText;
+    QString decimalUnicode = QChar(0x002E);
+
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + decimalUnicode;
+    }
+    else {
+        labelText = decimalUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::sqrtPressed() {
+    QString labelText;
+    QString sqrtUnicode = QChar(0x221A);
+
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + sqrtUnicode;
+    }
+    else {
+        labelText = sqrtUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::cbrtPressed() {
+    QString labelText;
+    QString cbrtUnicode = QChar(0x221B);
+
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + cbrtUnicode;
+    }
+    else {
+        labelText = cbrtUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::powerPressed() {
+    QString labelText;
+    QString powerUnicode = QChar(0x2303);
+
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + powerUnicode;
+    }
+    else {
+        labelText = powerUnicode;
     }
 
     ui->label_screen->setText(labelText);

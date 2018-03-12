@@ -25,6 +25,12 @@ private slots:
     void basicModePressed();
     void parFuncPressed();
     void piPressed();
+    void leftParPressed();
+    void rightParPressed();
+    void decimalPressed();
+    void sqrtPressed();
+    void cbrtPressed();
+    void powerPressed();
 };
 
 #endif // SCIENTIFICWINDOW_H
