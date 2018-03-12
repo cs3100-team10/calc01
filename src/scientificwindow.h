@@ -31,6 +31,7 @@ private slots:
     void sqrtPressed();
     void cbrtPressed();
     void powerPressed();
+    void expPressed();
 };
 
 #endif // SCIENTIFICWINDOW_H

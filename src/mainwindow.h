@@ -26,6 +26,7 @@ private slots:
     void sciModePressed();
     void upPressed();
     void downPressed();
+    void decimalPressed();
     void equalsPressed();
 };
 

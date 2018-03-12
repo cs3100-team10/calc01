@@ -7,6 +7,7 @@
 scientificWindow::scientificWindow(QWidget *parent) :
     QDialog(parent), ui(new Ui::scientificWindow) {
     ui->setupUi(this);
+    ui->radioButton_radians->setChecked(true);
 
     connect(ui->pushButton_0zero,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_1one,SIGNAL(released()),this, SLOT(digitPressed()));
@@ -25,6 +26,8 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_asin,SIGNAL(released()),this, SLOT(parFuncPressed()));
     connect(ui->pushButton_acos,SIGNAL(released()),this, SLOT(parFuncPressed()));
     connect(ui->pushButton_atan,SIGNAL(released()),this, SLOT(parFuncPressed()));
+    connect(ui->pushButton_log,SIGNAL(released()),this, SLOT(parFuncPressed()));
+    connect(ui->pushButton_ln,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_clear,SIGNAL(released()),this,SLOT(clearPressed()));
 
@@ -33,13 +36,13 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_basicMode,SIGNAL(released()),this,SLOT(basicModePressed()));
 
     connect(ui->pushButton_pi,SIGNAL(released()),this,SLOT(piPressed()));
-
     connect(ui->pushButton_parLeft,SIGNAL(released()),this,SLOT(leftParPressed()));
     connect(ui->pushButton_parRight,SIGNAL(released()),this,SLOT(rightParPressed()));
     connect(ui->pushButton_decimal,SIGNAL(released()),this,SLOT(decimalPressed()));
     connect(ui->pushButton_sqrt,SIGNAL(released()),this,SLOT(sqrtPressed()));
     connect(ui->pushButton_cbrt,SIGNAL(released()),this,SLOT(cbrtPressed()));
     connect(ui->pushButton_power,SIGNAL(released()),this,SLOT(powerPressed()));
+    connect(ui->pushButton_exp,SIGNAL(released()),this,SLOT(expPressed()));
 }
 
 scientificWindow::~scientificWindow() {
@@ -62,8 +65,6 @@ void scientificWindow::parFuncPressed() {
     QPushButton *button = (QPushButton*)sender();
     QString labelText;
 
-    //qDebug << ui->label_screen->text();
-
     if(ui->label_screen->text() != (QString)"0") {
         labelText = ui->label_screen->text() + button->text();
     }
@@ -71,30 +72,22 @@ void scientificWindow::parFuncPressed() {
         labelText = button->text();
     }
 
-    //QString labelText = QString::number(labelNumber,'g',15); // 15 is the current double precision
-
     ui->label_screen->setText(labelText + "(");
-
 }
 
 void scientificWindow::clearPressed() {
     QString currentText = ui->label_screen->text();
 
-    //TO DO:
-    // add functionality to save what was currently on the screen before clearing it
-
-    ui->label_screen->setText((QString)"");
-
+    ui->label_screen->setText((QString)"0");
 }
 
 void scientificWindow::backPressed() {
     QString currentText = ui->label_screen->text();
     int textLength = currentText.length();
     currentText.truncate(textLength - 1);
-     QString newText = currentText;
+    QString newText = currentText;
 
     ui->label_screen->setText(newText);
-
 }
 
 void scientificWindow::basicModePressed() {
@@ -199,4 +192,18 @@ void scientificWindow::powerPressed() {
     }
 
     ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::expPressed() {
+    QPushButton *button = (QPushButton*)sender();
+    QString labelText;
+
+    if(ui->label_screen->text() != (QString)"0") {
+        labelText = ui->label_screen->text() + button->text();
+    }
+    else {
+        labelText = button->text();
+    }
+
+    ui->label_screen->setText(labelText + "^(");
 }
