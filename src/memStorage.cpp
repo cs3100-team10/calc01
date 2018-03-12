@@ -58,7 +58,7 @@ QString MemStorage::up()
  **/
 QString MemStorage::down()
 {
-    if (pos <= this->size())
+    if (pos < this->size())
     {
         // we're not already at the lowest index
         // we need to move down by 1
