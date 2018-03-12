@@ -2,6 +2,7 @@
 #define SCIENTIFICWINDOW_H
 
 #include <QDialog>
+#include "memStorage.h"
 
 namespace Ui {
 class scientificWindow;
@@ -14,6 +15,7 @@ class scientificWindow : public QDialog
 public:
     explicit scientificWindow(QWidget *parent = 0);
     ~scientificWindow();
+    MemStorage mem;
 
 private:
     Ui::scientificWindow *ui;
@@ -33,6 +35,10 @@ private slots:
     void cbrtPressed();
     void powerPressed();
     void expPressed();
+
+    void upPressed();
+    void downPressed();
+    void equalsPressed();
 };
 
 #endif // SCIENTIFICWINDOW_H

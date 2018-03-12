@@ -47,6 +47,10 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_cbrt,SIGNAL(released()),this,SLOT(cbrtPressed()));
     connect(ui->pushButton_power,SIGNAL(released()),this,SLOT(powerPressed()));
     connect(ui->pushButton_exp,SIGNAL(released()),this,SLOT(expPressed()));
+
+    connect(ui->pushButton_up, SIGNAL(released()), this, SLOT(upPressed()));
+    connect(ui->pushButton_down, SIGNAL(released()), this, SLOT(downPressed()));
+    connect(ui->pushButton_equals, SIGNAL(released()), this, SLOT(equalsPressed()));
 }
 
 scientificWindow::~scientificWindow() {
@@ -221,4 +225,24 @@ void scientificWindow::expPressed() {
     }
 
     ui->label_screen->setText(labelText + "^(");
+}
+
+void scientificWindow::upPressed() {
+    QString str = mem.up();
+    ui->label_screen->setText(str);
+}
+
+void scientificWindow::downPressed() {
+    QString str = mem.down();
+    ui->label_screen->setText(str);
+}
+
+void scientificWindow::equalsPressed() {
+    //removes empty node values if any exist
+    QString currentText = ui->label_screen->text();
+    //adds to memory if not blank
+    if (currentText != "") {
+        QString str = mem.push(currentText); // will always return empty QString
+        ui->label_screen->setText(str);
+    }
 }
