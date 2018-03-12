@@ -13,7 +13,7 @@ TEMPLATE = app
 
 SOURCES += src/main.cpp src/mainwindow.cpp \
     src/scientificwindow.cpp \
-    src/memstorage.cpp
+    src/memStorage.cpp
 
 HEADERS  += src/mainwindow.h \
     src/scientificwindow.h
