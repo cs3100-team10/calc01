@@ -53,6 +53,11 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_up, SIGNAL(released()), this, SLOT(upPressed()));
     connect(ui->pushButton_down, SIGNAL(released()), this, SLOT(downPressed()));
     connect(ui->pushButton_equals, SIGNAL(released()), this, SLOT(equalsPressed()));
+
+    connect(ui->pushButton_divide,SIGNAL(released()),this, SLOT(dividePressed()));
+    connect(ui->pushButton_multiply,SIGNAL(released()),this, SLOT(multiplyPressed()));
+    connect(ui->pushButton_subtract,SIGNAL(released()),this, SLOT(subtractPressed()));
+    connect(ui->pushButton_add,SIGNAL(released()),this, SLOT(addPressed()));
 }
 
 scientificWindow::~scientificWindow() {
@@ -254,4 +259,68 @@ void scientificWindow::on_lineEdit_returnPressed()
 {
     //pops the text into a message box, in the future the string will be sent to be parsed
     QMessageBox::information(this, "This will be parsed", ui->lineEdit->text());
+}
+
+void scientificWindow::dividePressed() {
+    QString labelText;
+    QString divideUnicode = QString("÷");
+
+    if(ui->label_screen->text() != (QString)"") {
+        labelText = ui->label_screen->text() + divideUnicode;
+    }
+    else {
+        //pull from memory at last location
+        QString lastMem = mem.recentMem();
+        labelText = lastMem + divideUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::multiplyPressed() {
+    QString labelText;
+    QString multiplyUnicode = QChar(0x002A);
+
+    if(ui->label_screen->text() != (QString)"") {
+        labelText = ui->label_screen->text() + multiplyUnicode;
+    }
+    else {
+        //pull from memory at last location
+        QString lastMem = mem.recentMem();
+        labelText = lastMem + multiplyUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::addPressed() {
+    QString labelText;
+    QString addUnicode = QChar(0x002B);
+
+    if(ui->label_screen->text() != (QString)"") {
+        labelText = ui->label_screen->text() + addUnicode;
+    }
+    else {
+        //pull from memory at last location
+        QString lastMem = mem.recentMem();
+        labelText = lastMem + addUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
+}
+
+void scientificWindow::subtractPressed() {
+    QString labelText;
+    QString subtractUnicode = QChar(0x002D);
+
+    if(ui->label_screen->text() != (QString)"") {
+        labelText = ui->label_screen->text() + subtractUnicode;
+    }
+    else {
+        //pull from memory at last location
+        QString lastMem = mem.recentMem();
+        labelText = lastMem + subtractUnicode;
+    }
+
+    ui->label_screen->setText(labelText);
 }

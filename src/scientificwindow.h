@@ -40,6 +40,11 @@ private slots:
     void downPressed();
     void equalsPressed();
     void on_lineEdit_returnPressed();
+
+    void dividePressed();
+    void multiplyPressed();
+    void addPressed();
+    void subtractPressed();
 };
 
 #endif // SCIENTIFICWINDOW_H
