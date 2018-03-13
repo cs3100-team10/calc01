@@ -91,3 +91,14 @@ QString MemStorage::recentMem()
         return QString(""); //return error of no memory
     }
 }
+
+/**
+ * Reset the position in memory to beginning.
+ **/
+void MemStorage::returnBegin()
+{
+    if (pos != this->size())
+    {
+        pos = this->size();
+    }
+}

@@ -66,6 +66,8 @@ void MainWindow::digitPressed() {
 
 void MainWindow::clearPressed() {
     ui->label_screen->setText((QString)"0");
+    //reset to beginning of memory if in memory
+    mem.returnBegin();
 }
 
 void MainWindow::backPressed() {

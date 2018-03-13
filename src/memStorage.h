@@ -21,6 +21,7 @@ class MemStorage
     QString down();
     QString push(QString str);
     QString recentMem();
+    void returnBegin();
 
 };
 
