@@ -30,6 +30,10 @@ private slots:
     void decimalPressed();
     void equalsPressed();
     void on_lineEdit_returnPressed();
+    void dividePressed();
+    void multiplyPressed();
+    void addPressed();
+    void subtractPressed();
 };
 
 #endif // MAINWINDOW_H

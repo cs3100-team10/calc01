@@ -20,6 +20,7 @@ class MemStorage
     QString up();
     QString down();
     QString push(QString str);
+    QString recentMem();
 
 };
 

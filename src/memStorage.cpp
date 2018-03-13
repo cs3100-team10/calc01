@@ -78,3 +78,16 @@ QString MemStorage::push(QString str)
     pos = this->size();
     return this->at(pos); // will always return empty QString
 }
+
+/**
+ * Returns the value of the most recent QString in the memory.
+ **/
+QString MemStorage::recentMem()
+{
+    if (this->size() != 0)
+    {
+        return this->at(this->size() - 1);
+    } else {
+        return QString(""); //return error of no memory
+    }
+}
