@@ -3,6 +3,8 @@
 #include "scientificwindow.h"
 #include "helpdialogbasic.h"
 
+#include <QMessageBox>
+
 //#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -114,4 +116,10 @@ void MainWindow::equalsPressed() {
         QString str = mem.push(currentText);
         ui->label_screen->setText(str);
     }
+}
+
+void MainWindow::on_lineEdit_returnPressed()
+{
+    //pops the text into a message box, in the future the string will be sent to be parsed
+    QMessageBox::information(this, "This will be parsed", ui->lineEdit->text());
 }

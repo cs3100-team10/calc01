@@ -39,6 +39,7 @@ private slots:
     void upPressed();
     void downPressed();
     void equalsPressed();
+    void on_lineEdit_returnPressed();
 };
 
 #endif // SCIENTIFICWINDOW_H

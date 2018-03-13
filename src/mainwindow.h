@@ -29,6 +29,7 @@ private slots:
     void downPressed();
     void decimalPressed();
     void equalsPressed();
+    void on_lineEdit_returnPressed();
 };
 
 #endif // MAINWINDOW_H
