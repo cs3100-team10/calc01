@@ -41,6 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_multiply,SIGNAL(released()),this, SLOT(multiplyPressed()));
     connect(ui->pushButton_subtract,SIGNAL(released()),this, SLOT(subtractPressed()));
     connect(ui->pushButton_add,SIGNAL(released()),this, SLOT(addPressed()));
+
+    connect(ui->pushButton_decimal,SIGNAL(released()),this, SLOT(decimalPressed()));
 }
 
 MainWindow::~MainWindow() {
@@ -105,11 +107,11 @@ void MainWindow::decimalPressed() {
     QString labelText;
     QString decimalUnicode = QChar(0x002E);
 
-    if(ui->label_screen->text() != (QString)"0") {
+    if(ui->label_screen->text() != (QString)"") {
         labelText = ui->label_screen->text() + decimalUnicode;
     }
     else {
-        labelText = decimalUnicode;
+        labelText = QString("0") + decimalUnicode;
     }
 
     ui->label_screen->setText(labelText);
