@@ -56,29 +56,32 @@ void MainWindow::digitPressed() {
 
     QString buttonText = QString::number(buttonNumber,'g',15); // 15 is the current double precision
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + button->text();
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + button->text();
     }
     else {
         labelText = button->text();
     }
 
-    ui->label_screen->setText(labelText);
+    //If you un-comment the line below, memory stops working correctly
+    //ui->label_screen->setText(labelText);
+
+    ui->lineEdit->setText(labelText);
 }
 
 void MainWindow::clearPressed() {
-    ui->label_screen->setText((QString)"0");
+    ui->lineEdit->setText((QString)"0");
     //reset to beginning of memory if in memory
     mem.returnBegin();
 }
 
 void MainWindow::backPressed() {
-    QString currentText = ui->label_screen->text();
+    QString currentText = ui->lineEdit->text();
     int textLength = currentText.length();
     currentText.truncate(textLength - 1);
      QString newText = currentText;
 
-    ui->label_screen->setText(newText);
+    ui->lineEdit->setText(newText);
 }
 
 void MainWindow::sciModePressed() {
@@ -95,26 +98,26 @@ void MainWindow::helpPressed() {
 
 void MainWindow::upPressed() {
     QString str = mem.up();
-    ui->label_screen->setText(str);
+    ui->lineEdit->setText(str);
 }
 
 void MainWindow::downPressed() {
     QString str = mem.down();
-    ui->label_screen->setText(str);
+    ui->lineEdit->setText(str);
 }
 
 void MainWindow::decimalPressed() {
     QString labelText;
     QString decimalUnicode = QChar(0x002E);
 
-    if(ui->label_screen->text() != (QString)"") {
-        labelText = ui->label_screen->text() + decimalUnicode;
+    if(ui->lineEdit->text() != (QString)"") {
+        labelText = ui->lineEdit->text() + decimalUnicode;
     }
     else {
         labelText = QString("0") + decimalUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void MainWindow::equalsPressed() {
@@ -123,7 +126,7 @@ void MainWindow::equalsPressed() {
     //adds to memory if not blank
     if (currentText != "") {
         QString str = mem.push(currentText);
-        ui->label_screen->setText(str);
+        ui->lineEdit->setText(str);
     }
 }
 
@@ -137,8 +140,8 @@ void MainWindow::dividePressed() {
     QString labelText;
     QString divideUnicode = QString("÷");
 
-    if(ui->label_screen->text() != (QString)"") {
-        labelText = ui->label_screen->text() + divideUnicode;
+    if(ui->lineEdit->text() != (QString)"") {
+        labelText = ui->lineEdit->text() + divideUnicode;
     }
     else {
         //pull from memory at last location
@@ -146,15 +149,15 @@ void MainWindow::dividePressed() {
         labelText = lastMem + divideUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void MainWindow::multiplyPressed() {
     QString labelText;
     QString multiplyUnicode = QChar(0x002A);
 
-    if(ui->label_screen->text() != (QString)"") {
-        labelText = ui->label_screen->text() + multiplyUnicode;
+    if(ui->lineEdit->text() != (QString)"") {
+        labelText = ui->lineEdit->text() + multiplyUnicode;
     }
     else {
         //pull from memory at last location
@@ -162,15 +165,15 @@ void MainWindow::multiplyPressed() {
         labelText = lastMem + multiplyUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void MainWindow::addPressed() {
     QString labelText;
     QString addUnicode = QChar(0x002B);
 
-    if(ui->label_screen->text() != (QString)"") {
-        labelText = ui->label_screen->text() + addUnicode;
+    if(ui->lineEdit->text() != (QString)"") {
+        labelText = ui->lineEdit->text() + addUnicode;
     }
     else {
         //pull from memory at last location
@@ -178,15 +181,15 @@ void MainWindow::addPressed() {
         labelText = lastMem + addUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void MainWindow::subtractPressed() {
     QString labelText;
     QString subtractUnicode = QChar(0x002D);
 
-    if(ui->label_screen->text() != (QString)"") {
-        labelText = ui->label_screen->text() + subtractUnicode;
+    if(ui->lineEdit->text() != (QString)"") {
+        labelText = ui->lineEdit->text() + subtractUnicode;
     }
     else {
         //pull from memory at last location
@@ -194,5 +197,5 @@ void MainWindow::subtractPressed() {
         labelText = lastMem + subtractUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
