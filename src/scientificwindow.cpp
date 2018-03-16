@@ -71,27 +71,27 @@ void scientificWindow::digitPressed() {
 
     QString buttonText = QString::number(buttonNumber,'g',15); // 15 is the current double precision
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + button->text();
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + button->text();
     }
     else {
         labelText = button->text();
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::clearPressed() {
-    ui->label_screen->setText((QString)"0");
+    ui->lineEdit->setText((QString)"0");
 }
 
 void scientificWindow::backPressed() {
-    QString currentText = ui->label_screen->text();
+    QString currentText = ui->lineEdit->text();
     int textLength = currentText.length();
     currentText.truncate(textLength - 1);
     QString newText = currentText;
 
-    ui->label_screen->setText(newText);
+    ui->lineEdit->setText(newText);
 }
 
 void scientificWindow::basicModePressed() {
@@ -110,14 +110,14 @@ void scientificWindow::parFuncPressed() {
     QPushButton *button = (QPushButton*)sender();
     QString labelText;
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + button->text();
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + button->text();
     }
     else {
         labelText = button->text();
     }
 
-    ui->label_screen->setText(labelText + "(");
+    ui->lineEdit->setText(labelText + "(");
 }
 
 
@@ -126,131 +126,131 @@ void scientificWindow::piPressed() {
     QString labelText;
     QString piUnicode = QChar(0x03C0);
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + piUnicode;
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + piUnicode;
     }
     else {
         labelText = piUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::leftParPressed() {
     QString labelText;
     QString leftParUnicode = QChar(0x0028);
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + leftParUnicode;
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + leftParUnicode;
     }
     else {
         labelText = leftParUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::rightParPressed() {
     QString labelText;
     QString rightParUnicode = QChar(0x0029);
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + rightParUnicode;
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + rightParUnicode;
     }
     else {
         labelText = rightParUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::decimalPressed() {
     QString labelText;
     QString decimalUnicode = QChar(0x002E);
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + decimalUnicode;
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + decimalUnicode;
     }
     else {
         labelText = decimalUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::sqrtPressed() {
     QString labelText;
     QString sqrtUnicode = QChar(0x221A);
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + sqrtUnicode;
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + sqrtUnicode;
     }
     else {
         labelText = sqrtUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::cbrtPressed() {
     QString labelText;
     QString cbrtUnicode = QChar(0x221B);
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + cbrtUnicode;
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + cbrtUnicode;
     }
     else {
         labelText = cbrtUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::powerPressed() {
     QString labelText;
     QString powerUnicode = QChar(0x2303);
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + powerUnicode;
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + powerUnicode;
     }
     else {
         labelText = powerUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::expPressed() {
     QPushButton *button = (QPushButton*)sender();
     QString labelText;
 
-    if(ui->label_screen->text() != (QString)"0") {
-        labelText = ui->label_screen->text() + button->text();
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + button->text();
     }
     else {
         labelText = button->text();
     }
 
-    ui->label_screen->setText(labelText + "^(");
+    ui->lineEdit->setText(labelText + "^(");
 }
 
 void scientificWindow::upPressed() {
     QString str = mem.up();
-    ui->label_screen->setText(str);
+    ui->lineEdit->setText(str);
 }
 
 void scientificWindow::downPressed() {
     QString str = mem.down();
-    ui->label_screen->setText(str);
+    ui->lineEdit->setText(str);
 }
 
 void scientificWindow::equalsPressed() {
     //removes empty node values if any exist
-    QString currentText = ui->label_screen->text();
+    QString currentText = ui->lineEdit->text();
     //adds to memory if not blank
     if (currentText != "") {
         QString str = mem.push(currentText); // will always return empty QString
-        ui->label_screen->setText(str);
+        ui->lineEdit->setText(str);
     }
 }
 
@@ -265,8 +265,8 @@ void scientificWindow::dividePressed() {
     QString labelText;
     QString divideUnicode = QString("÷");
 
-    if(ui->label_screen->text() != (QString)"") {
-        labelText = ui->label_screen->text() + divideUnicode;
+    if(ui->lineEdit->text() != (QString)"") {
+        labelText = ui->lineEdit->text() + divideUnicode;
     }
     else {
         //pull from memory at last location
@@ -274,15 +274,15 @@ void scientificWindow::dividePressed() {
         labelText = lastMem + divideUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::multiplyPressed() {
     QString labelText;
     QString multiplyUnicode = QChar(0x002A);
 
-    if(ui->label_screen->text() != (QString)"") {
-        labelText = ui->label_screen->text() + multiplyUnicode;
+    if(ui->lineEdit->text() != (QString)"") {
+        labelText = ui->lineEdit->text() + multiplyUnicode;
     }
     else {
         //pull from memory at last location
@@ -290,15 +290,15 @@ void scientificWindow::multiplyPressed() {
         labelText = lastMem + multiplyUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::addPressed() {
     QString labelText;
     QString addUnicode = QChar(0x002B);
 
-    if(ui->label_screen->text() != (QString)"") {
-        labelText = ui->label_screen->text() + addUnicode;
+    if(ui->lineEdit->text() != (QString)"") {
+        labelText = ui->lineEdit->text() + addUnicode;
     }
     else {
         //pull from memory at last location
@@ -306,15 +306,15 @@ void scientificWindow::addPressed() {
         labelText = lastMem + addUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::subtractPressed() {
     QString labelText;
     QString subtractUnicode = QChar(0x002D);
 
-    if(ui->label_screen->text() != (QString)"") {
-        labelText = ui->label_screen->text() + subtractUnicode;
+    if(ui->lineEdit->text() != (QString)"") {
+        labelText = ui->lineEdit->text() + subtractUnicode;
     }
     else {
         //pull from memory at last location
@@ -322,5 +322,5 @@ void scientificWindow::subtractPressed() {
         labelText = lastMem + subtractUnicode;
     }
 
-    ui->label_screen->setText(labelText);
+    ui->lineEdit->setText(labelText);
 }

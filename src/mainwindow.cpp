@@ -122,7 +122,7 @@ void MainWindow::decimalPressed() {
 
 void MainWindow::equalsPressed() {
     //removes empty node values if any exist
-    QString currentText = ui->label_screen->text();
+    QString currentText = ui->lineEdit->text();
     //adds to memory if not blank
     if (currentText != "") {
         QString str = mem.push(currentText);
