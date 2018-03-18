@@ -6,26 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>384</width>
-    <height>776</height>
+    <width>400</width>
+    <height>775</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>0</width>
-    <height>0</height>
+    <width>400</width>
+    <height>775</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1500</width>
-    <height>1500</height>
+    <width>400</width>
+    <height>775</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -34,7 +34,7 @@
   <widget class="QPushButton" name="pushButton_exit">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>290</x>
      <y>740</y>
      <width>93</width>
      <height>28</height>
@@ -47,7 +47,7 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>40</x>
      <y>380</y>
      <width>381</width>
      <height>16</height>
@@ -60,7 +60,7 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>140</x>
      <y>350</y>
      <width>321</width>
      <height>31</height>
@@ -73,7 +73,7 @@
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>210</x>
      <y>390</y>
      <width>71</width>
      <height>61</height>
@@ -88,7 +88,7 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>140</y>
      <width>381</width>
      <height>211</height>
@@ -113,7 +113,7 @@ Note that pi/2 = 1.57079632679, but when the calculator is
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>140</x>
      <y>110</y>
      <width>321</width>
      <height>31</height>
@@ -126,7 +126,7 @@ Note that pi/2 = 1.57079632679, but when the calculator is
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>120</x>
      <y>400</y>
      <width>71</width>
      <height>61</height>
@@ -142,7 +142,7 @@ Note that pi/2 = 1.57079632679, but when the calculator is
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>90</x>
      <y>440</y>
      <width>321</width>
      <height>31</height>
@@ -155,7 +155,7 @@ Note that pi/2 = 1.57079632679, but when the calculator is
   <widget class="QLabel" name="label_13">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>330</x>
      <y>470</y>
      <width>111</width>
      <height>261</height>
@@ -183,7 +183,7 @@ inf
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>30</y>
      <width>341</width>
      <height>91</height>
@@ -202,7 +202,7 @@ Not Accepted:
   <widget class="QLabel" name="label_11">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>130</x>
      <y>470</y>
      <width>111</width>
      <height>261</height>
@@ -230,7 +230,7 @@ Not Accepted:
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>150</x>
      <y>0</y>
      <width>151</width>
      <height>31</height>
@@ -243,7 +243,7 @@ Not Accepted:
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>470</y>
      <width>111</width>
      <height>261</height>
@@ -271,7 +271,7 @@ Power</string>
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>240</x>
      <y>470</y>
      <width>111</width>
      <height>261</height>
