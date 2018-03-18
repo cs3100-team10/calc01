@@ -58,6 +58,8 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_multiply,SIGNAL(released()),this, SLOT(multiplyPressed()));
     connect(ui->pushButton_subtract,SIGNAL(released()),this, SLOT(subtractPressed()));
     connect(ui->pushButton_add,SIGNAL(released()),this, SLOT(addPressed()));
+
+    connect(ui->pushButton_plusMinus,SIGNAL(released()),this, SLOT(plusMinusPressed()));
 }
 
 scientificWindow::~scientificWindow() {
@@ -320,6 +322,23 @@ void scientificWindow::subtractPressed() {
         //pull from memory at last location
         QString lastMem = mem.recentMem();
         labelText = lastMem + subtractUnicode;
+    }
+
+    ui->lineEdit->setText(labelText);
+}
+
+void scientificWindow::plusMinusPressed() {
+    QString labelText;
+
+    labelText = ui->lineEdit->text();
+
+    //if already negated
+    if (labelText.endsWith(")") && labelText.startsWith("-(")) {
+        labelText = labelText.remove(0,2);
+        int size = labelText.size();
+        labelText = labelText.remove(size-1,size);
+    } else { //if not negated
+        labelText = QString("-(") + labelText + QString(")");
     }
 
     ui->lineEdit->setText(labelText);

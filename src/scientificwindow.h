@@ -45,6 +45,8 @@ private slots:
     void multiplyPressed();
     void addPressed();
     void subtractPressed();
+
+    void plusMinusPressed();
 };
 
 #endif // SCIENTIFICWINDOW_H
