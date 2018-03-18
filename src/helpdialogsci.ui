@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>775</height>
+    <width>750</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,14 +18,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
-    <height>775</height>
+    <width>750</width>
+    <height>650</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>400</width>
-    <height>775</height>
+    <width>750</width>
+    <height>650</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -34,8 +34,8 @@
   <widget class="QPushButton" name="pushButton_exit">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>740</y>
+     <x>640</x>
+     <y>610</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -47,9 +47,9 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>380</y>
-     <width>381</width>
+     <x>50</x>
+     <y>460</y>
+     <width>331</width>
      <height>16</height>
     </rect>
    </property>
@@ -60,9 +60,9 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>350</y>
-     <width>321</width>
+     <x>150</x>
+     <y>430</y>
+     <width>141</width>
      <height>31</height>
     </rect>
    </property>
@@ -73,8 +73,8 @@
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>390</y>
+     <x>220</x>
+     <y>470</y>
      <width>71</width>
      <height>61</height>
     </rect>
@@ -88,9 +88,9 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>140</y>
-     <width>381</width>
+     <x>40</x>
+     <y>220</y>
+     <width>351</width>
      <height>211</height>
     </rect>
    </property>
@@ -113,9 +113,9 @@ Note that pi/2 = 1.57079632679, but when the calculator is
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>110</y>
-     <width>321</width>
+     <x>150</x>
+     <y>190</y>
+     <width>111</width>
      <height>31</height>
     </rect>
    </property>
@@ -126,8 +126,8 @@ Note that pi/2 = 1.57079632679, but when the calculator is
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>400</y>
+     <x>130</x>
+     <y>480</y>
      <width>71</width>
      <height>61</height>
     </rect>
@@ -142,9 +142,9 @@ Note that pi/2 = 1.57079632679, but when the calculator is
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>440</y>
-     <width>321</width>
+     <x>470</x>
+     <y>0</y>
+     <width>221</width>
      <height>31</height>
     </rect>
    </property>
@@ -152,39 +152,11 @@ Note that pi/2 = 1.57079632679, but when the calculator is
     <string>--- MATHEMATICAL OPERATORS ---</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_13">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>470</y>
-     <width>111</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Output
-3
-3
--1
-1
-1
-3
-6
--6
-6
-3
--3
-3
-inf
-1
-25</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>30</y>
+     <x>40</x>
+     <y>110</y>
      <width>341</width>
      <height>91</height>
     </rect>
@@ -199,39 +171,11 @@ Not Accepted:
 </string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>470</y>
-     <width>111</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Operator Symbol
-+
-
-
--
-
-
-*
-
-
-/
-
-
-
-%
-^</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>0</y>
+     <x>160</x>
+     <y>80</y>
      <width>151</width>
      <height>31</height>
     </rect>
@@ -240,17 +184,50 @@ Not Accepted:
     <string>--- SPACES---</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>470</y>
-     <width>111</width>
-     <height>261</height>
+     <x>510</x>
+     <y>290</y>
+     <width>121</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Operator Name
+    <string>--- FUNCTIONS ---</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_16">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>310</y>
+     <width>341</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Functions are always followed by parenthesis.
+Accepted:
+    sqrt(4), rad2deg(cos(pi)), etc
+Not Accepted:
+    sqrt4, sqrt(4, etc</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>30</y>
+     <width>307</width>
+     <height>258</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string>Operator Name
 Add
 
 
@@ -266,19 +243,35 @@ Divide
 
 Modulo
 Power</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_12">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>470</y>
-     <width>111</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Expression
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_11">
+      <property name="text">
+       <string>Operator Symbol
++
+
+
+-
+
+
+*
+
+
+/
+
+
+
+%
+^</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_12">
+      <property name="text">
+       <string>Expression
 1+2
 1++2
 1+-2
@@ -294,7 +287,116 @@ Power</string>
 6/0
 6%5
 5^2</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_13">
+      <property name="text">
+       <string>Output
+3
+3
+-1
+1
+1
+3
+6
+-6
+6
+3
+-3
+3
+inf
+1
+25</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>410</y>
+     <width>333</width>
+     <height>194</height>
+    </rect>
    </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QLabel" name="label_15">
+      <property name="text">
+       <string>Function Name
+Square Root
+Natural Log
+Log (Base 10)
+Exponential
+
+Sine
+Cosine
+Tangent
+Arcsine
+Arccosine
+Arctangent</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_19">
+      <property name="text">
+       <string>Function String
+sqrt
+log
+log10
+exp
+
+sin
+cos
+tan
+asin
+acos
+atan</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_21">
+      <property name="text">
+       <string>Expression
+sqrt(4)
+log(2)
+log10(100)
+exp(1)
+exp(2)
+sin(pi)
+cos(pi)
+tan(pi)
+asin(0)
+acos(0)
+atan(0)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_20">
+      <property name="text">
+       <string>Output
+2
+0.693147
+2
+2.71828
+7.38906
+1.22465e-16
+-1
+-1.22465e-16
+0
+1.5708
+0</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
