@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "scientificwindow.h"
 #include "helpdialogbasic.h"
-#include "exprtk_parse.h"
+//#include "exprtk_parse.h"
 #include <sstream>
 
 #include <QMessageBox>
@@ -106,11 +106,13 @@ void MainWindow::helpPressed() {
 
 void MainWindow::upPressed() {
     QString str = mem.up();
+    toParse = mem.upParse();
     ui->lineEdit->setText(str);
 }
 
 void MainWindow::downPressed() {
     QString str = mem.down();
+    toParse = mem.downParse();
     ui->lineEdit->setText(str);
 }
 
@@ -132,13 +134,15 @@ void MainWindow::equalsPressed() {
     //removes empty node values if any exist
     QString currentText = ui->lineEdit->text();
     QString str;
+    string str1;
     //adds to memory if not blank
     if (currentText != "") {
         str = mem.push(currentText);
+        str1 = mem.pushParse(toParse);
         ui->lineEdit->setText(str);
     }
 
-    double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
+    /*double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
     //.toStdString();
 
     QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
@@ -146,6 +150,7 @@ void MainWindow::equalsPressed() {
     toParse = "";
     //push answer into memory
     str = mem.push(buttonText);
+    */
 }
 
 void MainWindow::on_lineEdit_returnPressed()
@@ -165,6 +170,7 @@ void MainWindow::dividePressed() {
         //pull from memory at last location
         QString lastMem = mem.recentMem();
         labelText = lastMem + divideUnicode;
+        toParse = mem.recentMemParse();
     }
     toParse = toParse + "/";
     ui->lineEdit->setText(labelText);
@@ -181,6 +187,7 @@ void MainWindow::multiplyPressed() {
         //pull from memory at last location
         QString lastMem = mem.recentMem();
         labelText = lastMem + multiplyUnicode;
+        toParse = mem.recentMemParse();
     }
     toParse = toParse + "*";
     ui->lineEdit->setText(labelText);
@@ -197,6 +204,7 @@ void MainWindow::addPressed() {
         //pull from memory at last location
         QString lastMem = mem.recentMem();
         labelText = lastMem + addUnicode;
+        toParse = mem.recentMemParse();
     }
     toParse = toParse + "+";
     ui->lineEdit->setText(labelText);
@@ -213,6 +221,7 @@ void MainWindow::subtractPressed() {
         //pull from memory at last location
         QString lastMem = mem.recentMem();
         labelText = lastMem + subtractUnicode;
+        toParse = mem.recentMemParse();
     }
     toParse = toParse + "-";
     ui->lineEdit->setText(labelText);

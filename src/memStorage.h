@@ -13,6 +13,7 @@ class MemStorage
     int pos;
 
     QString at(const int index) const;
+    string atParse(const int index) const;
     int size() const;
 
 
@@ -23,6 +24,10 @@ class MemStorage
     QString push(QString str);
     QString recentMem();
     void returnBegin();
+    string upParse();
+    string downParse();
+    string pushParse(string str);
+    string recentMemParse();
 
 };
 
