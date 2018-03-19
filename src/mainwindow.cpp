@@ -66,7 +66,7 @@ void MainWindow::digitPressed() {
 
     //If you un-comment the line below, memory stops working correctly
     //ui->label_screen->setText(labelText);
-    toParse = toParse + buttonNumber.to_string();
+    toParse = toParse + to_string(buttonNumber);
     ui->lineEdit->setText(labelText);
 }
 
@@ -137,6 +137,7 @@ void MainWindow::equalsPressed() {
     QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
 
     ui->label_screen->setText(buttonText);
+
 }
 
 void MainWindow::on_lineEdit_returnPressed()
