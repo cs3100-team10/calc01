@@ -66,7 +66,7 @@ void MainWindow::digitPressed() {
 
     //If you un-comment the line below, memory stops working correctly
     //ui->label_screen->setText(labelText);
-    toParse = toParse + to_string(buttonNumber);
+    toParse = toParse + std::to_string(buttonNumber);
     ui->lineEdit->setText(labelText);
 }
 
