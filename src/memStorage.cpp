@@ -15,17 +15,20 @@ QString MemStorage::at(const int index) const
 {
     if (index >= 0 && index < this->size())
     {
+        toParse = stringmem[index];
         return memory[index];
     }
 
     if (index == this->size())
     {
+        toParse = "";
         // empty string represents current entry
         return QString("");
     }
 
     else
     {
+        toParse = "";
         return QString("");
     }
 }
@@ -48,7 +51,6 @@ QString MemStorage::up()
         // we need to move up by 1
         pos--;
     }
-
     return this->at(pos);
 }
 
@@ -77,6 +79,7 @@ QString MemStorage::push(QString str)
     memory.push_back(str);
     pos = this->size();
     return this->at(pos); // will always return empty QString
+    stringmem.push_back(toParse);
 }
 
 /**
@@ -88,6 +91,7 @@ QString MemStorage::recentMem()
     {
         return this->at(this->size() - 1);
     } else {
+        toParse = "";
         return QString(""); //return error of no memory
     }
 }

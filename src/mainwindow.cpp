@@ -77,7 +77,7 @@ void MainWindow::clearPressed() {
     ui->lineEdit->setText((QString)"0");
     //reset to beginning of memory if in memory
     mem.returnBegin();
-
+    ui->label_screen->setText((QString)"");
     toParse = "";
 }
 
@@ -142,10 +142,10 @@ void MainWindow::equalsPressed() {
     //.toStdString();
 
     QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
-    ui->label_screen->setText("");
     ui->label_screen->setText(buttonText);
+    toParse = "";
     //push answer into memory
-    //str = mem.push(equalsAnswer);
+    str = mem.push(buttonText);
 }
 
 void MainWindow::on_lineEdit_returnPressed()

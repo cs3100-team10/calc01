@@ -9,7 +9,7 @@ class MemStorage
 {
     private:
     vector<QString> memory;
-    //vector<string> stringmem; //for the parser to use in calculating
+    vector<string> stringmem; //for the parser to use in calculating
     int pos;
 
     QString at(const int index) const;
