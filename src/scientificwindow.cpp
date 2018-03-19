@@ -2,17 +2,16 @@
 #include "ui_scientificwindow.h"
 #include "mainwindow.h"
 #include "helpdialogsci.h"
+#include "exprtk_parse.h"
+#include <sstream>
 
 #include <QMessageBox>
-
-//#include <QDebug>
 
 scientificWindow::scientificWindow(QWidget *parent) :
     QDialog(parent), ui(new Ui::scientificWindow) {
     ui->setupUi(this);
     ui->radioButton_radians->setChecked(true);
     this->setWindowTitle("Scientific Calculator");
-    //this->statusBar()->setSizeGripEnabled(false);
 
     connect(ui->pushButton_0zero,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_1one,SIGNAL(released()),this, SLOT(digitPressed()));
@@ -79,12 +78,16 @@ void scientificWindow::digitPressed() {
     else {
         labelText = button->text();
     }
+    std::stringstream buttonVal;
+    buttonVal << toParse << buttonNumber;
+    toParse = buttonVal.str();
 
     ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::clearPressed() {
     ui->lineEdit->setText((QString)"0");
+    toParse = "";
 }
 
 void scientificWindow::backPressed() {
@@ -94,6 +97,8 @@ void scientificWindow::backPressed() {
     QString newText = currentText;
 
     ui->lineEdit->setText(newText);
+
+    toParse = toParse.substr(0,toParse.size()-1); //delete last char from parse string
 }
 
 void scientificWindow::basicModePressed() {
@@ -108,7 +113,7 @@ void scientificWindow::helpPressed() {
     //this->close();
 }
 
-void scientificWindow::parFuncPressed() {
+void scientificWindow::parFuncPressed() { // might need work
     QPushButton *button = (QPushButton*)sender();
     QString labelText;
 
@@ -119,10 +124,9 @@ void scientificWindow::parFuncPressed() {
         labelText = button->text();
     }
 
+    //toParse = toParse + button->text().toStdString(); // work??
     ui->lineEdit->setText(labelText + "(");
 }
-
-
 
 void scientificWindow::piPressed() {
     QString labelText;
@@ -134,7 +138,7 @@ void scientificWindow::piPressed() {
     else {
         labelText = piUnicode;
     }
-
+    toParse = toParse + "pi";
     ui->lineEdit->setText(labelText);
 }
 
@@ -148,7 +152,7 @@ void scientificWindow::leftParPressed() {
     else {
         labelText = leftParUnicode;
     }
-
+    toParse = toParse + "(";
     ui->lineEdit->setText(labelText);
 }
 
@@ -162,7 +166,7 @@ void scientificWindow::rightParPressed() {
     else {
         labelText = rightParUnicode;
     }
-
+    toParse = toParse + ")";
     ui->lineEdit->setText(labelText);
 }
 
@@ -176,7 +180,7 @@ void scientificWindow::decimalPressed() {
     else {
         labelText = decimalUnicode;
     }
-
+    toParse = toParse + ".";
     ui->lineEdit->setText(labelText);
 }
 
@@ -190,7 +194,7 @@ void scientificWindow::sqrtPressed() {
     else {
         labelText = sqrtUnicode;
     }
-
+    toParse = toParse + "sqrt"; //should be 'sqrt(' ?
     ui->lineEdit->setText(labelText);
 }
 
@@ -218,7 +222,7 @@ void scientificWindow::powerPressed() {
     else {
         labelText = powerUnicode;
     }
-
+    toParse = toParse + "^";
     ui->lineEdit->setText(labelText);
 }
 
@@ -256,7 +260,6 @@ void scientificWindow::equalsPressed() {
     }
 }
 
-
 void scientificWindow::on_lineEdit_returnPressed()
 {
     //pops the text into a message box, in the future the string will be sent to be parsed
@@ -275,7 +278,7 @@ void scientificWindow::dividePressed() {
         QString lastMem = mem.recentMem();
         labelText = lastMem + divideUnicode;
     }
-
+    toParse = toParse + "/";
     ui->lineEdit->setText(labelText);
 }
 
@@ -291,7 +294,7 @@ void scientificWindow::multiplyPressed() {
         QString lastMem = mem.recentMem();
         labelText = lastMem + multiplyUnicode;
     }
-
+    toParse = toParse + "*";
     ui->lineEdit->setText(labelText);
 }
 
@@ -307,7 +310,7 @@ void scientificWindow::addPressed() {
         QString lastMem = mem.recentMem();
         labelText = lastMem + addUnicode;
     }
-
+    toParse = toParse + "+";
     ui->lineEdit->setText(labelText);
 }
 
@@ -323,7 +326,7 @@ void scientificWindow::subtractPressed() {
         QString lastMem = mem.recentMem();
         labelText = lastMem + subtractUnicode;
     }
-
+    toParse = toParse + "-";
     ui->lineEdit->setText(labelText);
 }
 

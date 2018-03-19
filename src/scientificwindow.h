@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "memStorage.h"
+#include <string>
 
 namespace Ui {
 class scientificWindow;
@@ -16,6 +17,7 @@ public:
     explicit scientificWindow(QWidget *parent = 0);
     ~scientificWindow();
     MemStorage mem;
+    string toParse;
 
 private:
     Ui::scientificWindow *ui;

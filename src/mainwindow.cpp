@@ -7,8 +7,6 @@
 
 #include <QMessageBox>
 
-//#include <QDebug>
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -70,6 +68,7 @@ void MainWindow::digitPressed() {
     std::stringstream buttonVal;
     buttonVal << toParse << buttonNumber;
     toParse = buttonVal.str();
+
     ui->lineEdit->setText(labelText);
 }
 
