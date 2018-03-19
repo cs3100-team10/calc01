@@ -11,6 +11,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = T10Calculator
 TEMPLATE = app
 
+INCLUDEPATH += $$PWD/vendor \
+    $$PWD/src
+
 SOURCES += src/main.cpp \
     src/exprtk_parse.cpp \
     src/mainwindow.cpp \
