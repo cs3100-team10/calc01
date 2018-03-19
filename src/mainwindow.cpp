@@ -3,6 +3,7 @@
 #include "scientificwindow.h"
 #include "helpdialogbasic.h"
 #include "exprtk_parse.h"
+#include <sstream>
 
 #include <QMessageBox>
 
@@ -52,8 +53,7 @@ MainWindow::~MainWindow() {
 
 void MainWindow::digitPressed() {
     QPushButton *button = (QPushButton*)sender();
-    int buttonNumber = (button->text()).toInt();
-    //double buttonNumber = (button->text()).toDouble();
+    double buttonNumber = (button->text()).toDouble();
     QString labelText;
 
     QString buttonText = QString::number(buttonNumber,'g',15); // 15 is the current double precision
@@ -67,7 +67,9 @@ void MainWindow::digitPressed() {
 
     //If you un-comment the line below, memory stops working correctly
     //ui->label_screen->setText(labelText);
-    toParse = toParse + std::to_string(buttonNumber);
+    std::stringstream buttonVal;
+    buttonVal << toParse << buttonNumber;
+    toParse = buttonVal.str();
     ui->lineEdit->setText(labelText);
 }
 
