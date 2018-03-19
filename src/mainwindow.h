@@ -16,7 +16,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     MemStorage mem;
-    String toParse;
+    string toParse;
 
 private:
     Ui::MainWindow *ui;
