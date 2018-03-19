@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>650</height>
+    <width>340</width>
+    <height>525</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,14 +18,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
-    <height>650</height>
+    <width>340</width>
+    <height>525</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>400</width>
-    <height>650</height>
+    <width>340</width>
+    <height>525</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -34,8 +34,8 @@
   <widget class="QPushButton" name="pushButton_exit">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>610</y>
+     <x>220</x>
+     <y>480</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -47,9 +47,9 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>120</y>
-     <width>321</width>
+     <x>120</x>
+     <y>0</y>
+     <width>101</width>
      <height>31</height>
     </rect>
    </property>
@@ -57,43 +57,11 @@
     <string>--- NUMBERS ---</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>40</y>
-     <width>341</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ABSOLUTELY NO SPACES SHOULD BE INCLUDED IN INPUT
-Accepted:
-    1+2(3*3)        //returns result of 19
-Not Accepted:
-    1+2 (3*3)      //returns result of 3
-
-</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>10</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>--- SPACES---</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>140</y>
+     <y>20</y>
      <width>381</width>
      <height>111</height>
     </rect>
@@ -104,16 +72,16 @@ Not Accepted:
 Accepts Decimals:
     .1, -.1, +0.001, +.0000000000001, etc
 Returns an output with up to 6 significant figures:
-    0.111111, 0.1, 1, -12.3456, 0.00333333, 1.23456e-34, etc
+    0.1111, 0.1, 1, -12.34, 0.00333, 1.234e-34, etc
 </string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>240</y>
-     <width>321</width>
+     <x>100</x>
+     <y>120</y>
+     <width>141</width>
      <height>31</height>
     </rect>
    </property>
@@ -124,8 +92,8 @@ Returns an output with up to 6 significant figures:
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>270</y>
+     <x>10</x>
+     <y>140</y>
      <width>381</width>
      <height>16</height>
     </rect>
@@ -134,43 +102,12 @@ Returns an output with up to 6 significant figures:
     <string>Parentheses are used to determine order of operations</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>290</y>
-     <width>201</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Example
-2*(3+4)
-2*3+4       
-</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>280</y>
-     <width>71</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Output
-14
-10</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>340</y>
-     <width>321</width>
+     <x>60</x>
+     <y>210</y>
+     <width>211</width>
      <height>31</height>
     </rect>
    </property>
@@ -178,17 +115,20 @@ Returns an output with up to 6 significant figures:
     <string>--- MATHEMATICAL OPERATORS ---</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>360</y>
-     <width>111</width>
-     <height>261</height>
+     <y>240</y>
+     <width>307</width>
+     <height>231</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Operator Name
+   <layout class="QHBoxLayout" name="horizontalLayout5">
+    <item>
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string>Operator Name
 Add
 
 
@@ -201,21 +141,14 @@ Multiply
 Divide
 
 
-
 </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>350</y>
-     <width>111</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Operator Symbol
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_11">
+      <property name="text">
+       <string>Operator Symbol
 +
 
 
@@ -229,19 +162,13 @@ Divide
 
 
 </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_12">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>350</y>
-     <width>111</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Expression
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_12">
+      <property name="text">
+       <string>Expression
 1+2
 1++2
 1+-2
@@ -255,19 +182,13 @@ Divide
 6/-2
 6/+2
 6/0</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_13">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>350</y>
-     <width>111</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Output
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_13">
+      <property name="text">
+       <string>Output
 3
 3
 -1
@@ -281,7 +202,40 @@ Divide
 -3
 3
 inf</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>160</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
    </property>
+   <layout class="QHBoxLayout" name="horizontalLayout6">
+    <item>
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>Example
+2*(3+4)
+2*3+4</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>Output
+14
+10</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
