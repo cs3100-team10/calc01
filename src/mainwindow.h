@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include <QMainWindow>
 #include "memStorage.h"
+#include "string.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,6 +16,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     MemStorage mem;
+    String toParse;
 
 private:
     Ui::MainWindow *ui;

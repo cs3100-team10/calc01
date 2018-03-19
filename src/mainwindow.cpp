@@ -66,7 +66,7 @@ void MainWindow::digitPressed() {
 
     //If you un-comment the line below, memory stops working correctly
     //ui->label_screen->setText(labelText);
-
+    toParse = toParse + buttonNumber.to_string();
     ui->lineEdit->setText(labelText);
 }
 
@@ -131,7 +131,7 @@ void MainWindow::equalsPressed() {
         ui->lineEdit->setText(str);
     }
 
-    double equalsAnswer = exprtk_parse(str.toStdString()); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
+    double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
     //.toStdString();
 
     QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
@@ -189,7 +189,7 @@ void MainWindow::addPressed() {
         QString lastMem = mem.recentMem();
         labelText = lastMem + addUnicode;
     }
-
+    toParse = toParse + "+";
     ui->lineEdit->setText(labelText);
 }
 
