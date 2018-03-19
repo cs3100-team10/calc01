@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "scientificwindow.h"
 #include "helpdialogbasic.h"
+#include "exprtk_parse.h"
 
 #include <QMessageBox>
 
@@ -123,11 +124,19 @@ void MainWindow::decimalPressed() {
 void MainWindow::equalsPressed() {
     //removes empty node values if any exist
     QString currentText = ui->lineEdit->text();
+    QString str;
     //adds to memory if not blank
     if (currentText != "") {
-        QString str = mem.push(currentText);
+        str = mem.push(currentText);
         ui->lineEdit->setText(str);
     }
+
+    double equalsAnswer = exprtk_parse(str.toStdString()); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
+    //.toStdString();
+
+    QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
+
+    ui->label_screen->setText(buttonText);
 }
 
 void MainWindow::on_lineEdit_returnPressed()
