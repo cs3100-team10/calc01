@@ -52,7 +52,8 @@ MainWindow::~MainWindow() {
 
 void MainWindow::digitPressed() {
     QPushButton *button = (QPushButton*)sender();
-    double buttonNumber = (button->text()).toDouble();
+    int buttonNumber = (button->text()).toInt();
+    //double buttonNumber = (button->text()).toDouble();
     QString labelText;
 
     QString buttonText = QString::number(buttonNumber,'g',15); // 15 is the current double precision
