@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "scientificwindow.h"
 #include "helpdialogbasic.h"
-//#include "exprtk_parse.h"
+#include "exprtk_parse.h"
 #include <sstream>
 
 #include <QMessageBox>
@@ -142,15 +142,19 @@ void MainWindow::equalsPressed() {
         ui->lineEdit->setText(str);
     }
 
-    /*double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
+    double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
     //.toStdString();
 
     QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
     ui->label_screen->setText(buttonText);
     toParse = "";
+    string answer;
+    std::stringstream stre;
+    stre << answer << equalsAnswer;
+    answer = stre.str();
     //push answer into memory
     str = mem.push(buttonText);
-    */
+    answer = mem.pushParse(answer);
 }
 
 void MainWindow::on_lineEdit_returnPressed()
