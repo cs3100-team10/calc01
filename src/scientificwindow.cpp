@@ -1,9 +1,9 @@
 #include "scientificwindow.h"
 #include "ui_scientificwindow.h"
-#include "mainwindow.h"
-#include "helpdialogsci.h"
-#include "exprtk_parse.h"
 #include <sstream>
+#include "mainwindow.h"
+#include "exprtk_parse.h"
+#include "helpdialogsci.h"
 
 #include <QMessageBox>
 

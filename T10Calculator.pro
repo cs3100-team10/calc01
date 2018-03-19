@@ -11,20 +11,21 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = T10Calculator
 TEMPLATE = app
 
-SOURCES += src/main.cpp src/mainwindow.cpp \
+SOURCES += src/main.cpp \
+    src/exprtk_parse.cpp \
+    src/mainwindow.cpp \
     src/scientificwindow.cpp \
     src/memStorage.cpp \
     src/helpdialogbasic.cpp \
     src/helpdialogsci.cpp
 
 HEADERS  += src/mainwindow.h \
+    src/exprtk_parse.h \
     src/scientificwindow.h \
     src/memStorage.h \
     src/helpdialogbasic.h \
     src/helpdialogsci.h \
-    src/exprtk.hpp \
-    src/exprtk_parse.h \
-    src/exprtk_parse.h
+    src/exprtk.hpp
 
 FORMS    += src/mainwindow.ui \
     src/scientificwindow.ui \
