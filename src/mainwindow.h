@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 #include <QMainWindow>
 #include "memStorage.h"
-#include "string.h"
+#include <string>
 
 namespace Ui {
 class MainWindow;
