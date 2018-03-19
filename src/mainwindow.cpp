@@ -77,15 +77,19 @@ void MainWindow::clearPressed() {
     ui->lineEdit->setText((QString)"0");
     //reset to beginning of memory if in memory
     mem.returnBegin();
+
+    toParse = "";
 }
 
 void MainWindow::backPressed() {
     QString currentText = ui->lineEdit->text();
     int textLength = currentText.length();
     currentText.truncate(textLength - 1);
-     QString newText = currentText;
+    QString newText = currentText;
 
     ui->lineEdit->setText(newText);
+
+    toParse = toParse.substr(0,toParse.size()-1); //delete last char from parse string
 }
 
 void MainWindow::sciModePressed() {
@@ -120,7 +124,7 @@ void MainWindow::decimalPressed() {
     else {
         labelText = QString("0") + decimalUnicode;
     }
-
+    toParse = toParse + ".";
     ui->lineEdit->setText(labelText);
 }
 
@@ -138,9 +142,10 @@ void MainWindow::equalsPressed() {
     //.toStdString();
 
     QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
-
+    ui->label_screen->setText("");
     ui->label_screen->setText(buttonText);
-
+    //push answer into memory
+    //str = mem.push(equalsAnswer);
 }
 
 void MainWindow::on_lineEdit_returnPressed()
@@ -161,7 +166,7 @@ void MainWindow::dividePressed() {
         QString lastMem = mem.recentMem();
         labelText = lastMem + divideUnicode;
     }
-
+    toParse = toParse + "/";
     ui->lineEdit->setText(labelText);
 }
 
@@ -177,7 +182,7 @@ void MainWindow::multiplyPressed() {
         QString lastMem = mem.recentMem();
         labelText = lastMem + multiplyUnicode;
     }
-
+    toParse = toParse + "*";
     ui->lineEdit->setText(labelText);
 }
 
@@ -209,6 +214,6 @@ void MainWindow::subtractPressed() {
         QString lastMem = mem.recentMem();
         labelText = lastMem + subtractUnicode;
     }
-
+    toParse = toParse + "-";
     ui->lineEdit->setText(labelText);
 }
