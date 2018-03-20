@@ -360,18 +360,19 @@ void scientificWindow::plusMinusPressed() {
     QString labelText;
 
     labelText = ui->lineEdit->text();
+    if (labelText != QString("")){
+        //if already negated
+        if (labelText.endsWith(")") && labelText.startsWith("-(")) {
+            labelText = labelText.remove(0,2);
+            int size = labelText.size();
+            labelText = labelText.remove(size-1,size);
 
-    //if already negated
-    if (labelText.endsWith(")") && labelText.startsWith("-(")) {
-        labelText = labelText.remove(0,2);
-        int size = labelText.size();
-        labelText = labelText.remove(size-1,size);
-
-        int sizeP = toParse.size();
-        toParse = toParse.substr(2,sizeP-1);
-    } else { //if not negated
-        labelText = QString("-(") + labelText + QString(")");
-        toParse = "-(" + toParse + ")";
+            int sizeP = toParse.size();
+            toParse = toParse.substr(2,sizeP-1);
+        } else { //if not negated
+            labelText = QString("-(") + labelText + QString(")");
+            toParse = "-(" + toParse + ")";
+        }
     }
 
     ui->lineEdit->setText(labelText);
