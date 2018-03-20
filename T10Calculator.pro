@@ -27,8 +27,7 @@ HEADERS  += src/mainwindow.h \
     src/scientificwindow.h \
     src/memStorage.h \
     src/helpdialogbasic.h \
-    src/helpdialogsci.h \
-    src/exprtk.hpp
+    src/helpdialogsci.h
 
 FORMS    += src/mainwindow.ui \
     src/scientificwindow.ui \
