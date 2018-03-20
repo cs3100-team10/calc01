@@ -2,7 +2,7 @@
 
 ## Qt Creator build tools
 
-The easiest way to build the project is to simply use Qt Creator's internal build tools. Post-ExprTk, building takes a lot of memory, so make sure you have a good computer.
+The easiest way to build the project is to simply use Qt Creator's internal build tools. Post-ExprTk, building takes some time when compiling from scratch or when changing ExprTk files, so be patient.
 
 ## `build.sh` (Mac and Linux)
 
@@ -12,14 +12,14 @@ Passing verbs to `build.sh` when you run it (for instance, `. build.sh <verb>`) 
 
 * `setup`: Creates the build folder if it doesn't already exist.
 * `clean`: Cleans the build folder (calls `setup`).
-* `build` (default): Copies the project to the build folder and compiles it (calls `clean`).
+* `build` (default): Copies the project to the build folder and compiles it (calls `setup`). Only copies new files to enable incremental builds.
 * `run`: Runs the project (calls `build`).
-* `test` (todo): Builds and tests the project (calls `clean`).
+* `test` (todo): Builds and tests the project (calls `setup`).
 * `runonly` (todo): Runs the previously-built project.
 
 Note that if you are attempting to `run` the calculator over ssh (PuTTY), the compiled program will abort if it cannot connect to a GUI. You must have X installed and running on your system and X-forwarding enabled in your ssh connection in order to run over ssh.
 
-Again, post-ExprTk, building takes a lot of memory and a lot of time. Nicole timed the build process on the CS Linux machines to take 17 minutes, so be patient. CI is on a pretty beefy computer so the build process should only take a few minutes there.
+Again, post-ExprTk, building takes a lot of memory and a lot of time. Compiling from scratch will take approximately 2m:30s on the CS Linux machines.
 
 ## Dependencies
 
