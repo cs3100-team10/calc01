@@ -35,5 +35,3 @@ FORMS    += src/mainwindow.ui \
     src/helpdialogsci.ui
 
 DISTFILES +=
-
-QMAKE_CXXFLAGS += -Wa,-mbig-obj
