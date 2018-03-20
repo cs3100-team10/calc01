@@ -258,9 +258,12 @@ void scientificWindow::downPressed() {
 void scientificWindow::equalsPressed() {
     //removes empty node values if any exist
     QString currentText = ui->lineEdit->text();
+    QString str;
+    string str1;
     //adds to memory if not blank
     if (currentText != "") {
         QString str = mem.push(currentText); // will always return empty QString
+        str1 = mem.pushParse(toParse);
         ui->lineEdit->setText(str);
     }
 
