@@ -87,6 +87,9 @@ void scientificWindow::digitPressed() {
 
 void scientificWindow::clearPressed() {
     ui->lineEdit->setText((QString)"0");
+    //reset to beginning of memory if in memory
+    mem.returnBegin();
+    ui->label_screen->setText((QString)"");
     toParse = "";
 }
 
@@ -208,7 +211,7 @@ void scientificWindow::cbrtPressed() {
     else {
         labelText = cbrtUnicode;
     }
-
+    toParse = toParse + "cbrt"; //different?
     ui->lineEdit->setText(labelText);
 }
 
@@ -243,11 +246,13 @@ void scientificWindow::expPressed() {
 void scientificWindow::upPressed() {
     QString str = mem.up();
     ui->lineEdit->setText(str);
+    toParse = mem.upParse();
 }
 
 void scientificWindow::downPressed() {
     QString str = mem.down();
     ui->lineEdit->setText(str);
+    toParse = mem.downParse();
 }
 
 void scientificWindow::equalsPressed() {
@@ -258,6 +263,20 @@ void scientificWindow::equalsPressed() {
         QString str = mem.push(currentText); // will always return empty QString
         ui->lineEdit->setText(str);
     }
+
+    double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
+    //.toStdString();
+
+    QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
+    ui->label_screen->setText(buttonText);
+    toParse = "";
+    string answer;
+    std::stringstream stre;
+    stre << answer << equalsAnswer;
+    answer = stre.str();
+    //push answer into memory
+    str = mem.push(buttonText);
+    answer = mem.pushParse(answer);
 }
 
 void scientificWindow::on_lineEdit_returnPressed()
@@ -277,6 +296,7 @@ void scientificWindow::dividePressed() {
         //pull from memory at last location
         QString lastMem = mem.recentMem();
         labelText = lastMem + divideUnicode;
+        toParse = mem.recentMemParse();
     }
     toParse = toParse + "/";
     ui->lineEdit->setText(labelText);
@@ -293,6 +313,7 @@ void scientificWindow::multiplyPressed() {
         //pull from memory at last location
         QString lastMem = mem.recentMem();
         labelText = lastMem + multiplyUnicode;
+        toParse = mem.recentMemParse();
     }
     toParse = toParse + "*";
     ui->lineEdit->setText(labelText);
@@ -309,6 +330,7 @@ void scientificWindow::addPressed() {
         //pull from memory at last location
         QString lastMem = mem.recentMem();
         labelText = lastMem + addUnicode;
+        toParse = mem.recentMemParse();
     }
     toParse = toParse + "+";
     ui->lineEdit->setText(labelText);
@@ -325,6 +347,7 @@ void scientificWindow::subtractPressed() {
         //pull from memory at last location
         QString lastMem = mem.recentMem();
         labelText = lastMem + subtractUnicode;
+        toParse = mem.recentMemParse();
     }
     toParse = toParse + "-";
     ui->lineEdit->setText(labelText);
@@ -340,8 +363,12 @@ void scientificWindow::plusMinusPressed() {
         labelText = labelText.remove(0,2);
         int size = labelText.size();
         labelText = labelText.remove(size-1,size);
+
+        int sizeP = toParse.size();
+        toParse = toParse.substr(2,sizeP-1);
     } else { //if not negated
         labelText = QString("-(") + labelText + QString(")");
+        toParse = "-(" + toParse + ")";
     }
 
     ui->lineEdit->setText(labelText);
