@@ -45,6 +45,9 @@ function clean()
 function build()
 {
 
+  # prep
+  setup
+
   # Copy over the current directory
   echo "build: copying"
   cp -ur $dev_dir/* $build_dir
