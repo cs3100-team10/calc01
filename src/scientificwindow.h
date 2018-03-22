@@ -29,6 +29,16 @@ private slots:
     void basicModePressed();
     void helpPressed();
     void parFuncPressed();
+
+    void sinPressed();
+    void cosPressed();
+    void tanPressed();
+    void asinPressed();
+    void acosPressed();
+    void atanPressed();
+    void logPressed();
+    void lnPressed():
+
     void piPressed();
     void leftParPressed();
     void rightParPressed();

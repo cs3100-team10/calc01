@@ -24,14 +24,29 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_8eight,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_9nine,SIGNAL(released()),this, SLOT(digitPressed()));
 
-    connect(ui->pushButton_sin,SIGNAL(released()),this, SLOT(parFuncPressed()));
-    connect(ui->pushButton_cos,SIGNAL(released()),this, SLOT(parFuncPressed()));
-    connect(ui->pushButton_tan,SIGNAL(released()),this, SLOT(parFuncPressed()));
-    connect(ui->pushButton_asin,SIGNAL(released()),this, SLOT(parFuncPressed()));
-    connect(ui->pushButton_acos,SIGNAL(released()),this, SLOT(parFuncPressed()));
-    connect(ui->pushButton_atan,SIGNAL(released()),this, SLOT(parFuncPressed()));
-    connect(ui->pushButton_log,SIGNAL(released()),this, SLOT(parFuncPressed()));
-    connect(ui->pushButton_ln,SIGNAL(released()),this, SLOT(parFuncPressed()));
+    connect(ui->pushButton_sin,SIGNAL(released()),this, SLOT(sinPressed()));
+    //connect(ui->pushButton_sin,SIGNAL(released()),this, SLOT(parFuncPressed()));
+
+    connect(ui->pushButton_cos,SIGNAL(released()),this, SLOT(cosPressed()));
+    //connect(ui->pushButton_cos,SIGNAL(released()),this, SLOT(parFuncPressed()));
+
+    connect(ui->pushButton_tan,SIGNAL(released()),this, SLOT(tanPressed()));
+    //connect(ui->pushButton_tan,SIGNAL(released()),this, SLOT(parFuncPressed()));
+
+    connect(ui->pushButton_asin,SIGNAL(released()),this, SLOT(asinPressed()));
+    //connect(ui->pushButton_asin,SIGNAL(released()),this, SLOT(parFuncPressed()));
+
+    connect(ui->pushButton_acos,SIGNAL(released()),this, SLOT(acosPressed()));
+    //connect(ui->pushButton_acos,SIGNAL(released()),this, SLOT(parFuncPressed()));
+
+    connect(ui->pushButton_atan,SIGNAL(released()),this, SLOT(atanPressed()));
+    //connect(ui->pushButton_atan,SIGNAL(released()),this, SLOT(parFuncPressed()));
+
+    connect(ui->pushButton_log,SIGNAL(released()),this, SLOT(logPressed()));
+    //connect(ui->pushButton_log,SIGNAL(released()),this, SLOT(parFuncPressed()));
+
+    connect(ui->pushButton_ln,SIGNAL(released()),this, SLOT(lnPressed()));
+    //connect(ui->pushButton_ln,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_clear,SIGNAL(released()),this,SLOT(clearPressed()));
 
@@ -129,6 +144,110 @@ void scientificWindow::parFuncPressed() { // might need work
 
     //toParse = toParse + button->text().toStdString(); // work??
     ui->lineEdit->setText(labelText + "(");
+}
+
+void scientificWindow::sinPressed() {
+    QString labelText;
+
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + "sin(");
+    }
+    else {
+        labelText = "sin(";
+    }
+    toParse = toParse + "sin(";
+    ui->lineEdit->setText(labelText);
+}
+
+void scientificWindow::cosPressed() {
+    QString labelText;
+
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + "cos(");
+    }
+    else {
+        labelText = "cos(";
+    }
+    toParse = toParse + "cos(";
+    ui->lineEdit->setText(labelText);
+}
+
+void scientificWindow::tanPressed() {
+    QString labelText;
+
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + "tan(");
+    }
+    else {
+        labelText = "tan(";
+    }
+    toParse = toParse + "tan(";
+    ui->lineEdit->setText(labelText);
+}
+
+void scientificWindow::asinPressed() {
+    QString labelText;
+
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + "asin(");
+    }
+    else {
+        labelText = "asin(";
+    }
+    toParse = toParse + "asin(";
+    ui->lineEdit->setText(labelText);
+}
+
+void scientificWindow::acosPressed() {
+    QString labelText;
+
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + "acos(");
+    }
+    else {
+        labelText = "acos(";
+    }
+    toParse = toParse + "acos(";
+    ui->lineEdit->setText(labelText);
+}
+
+void scientificWindow::atanPressed() {
+    QString labelText;
+
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + "atan(");
+    }
+    else {
+        labelText = "atan(";
+    }
+    toParse = toParse + "atan(";
+    ui->lineEdit->setText(labelText);
+}
+
+void scientificWindow::logPressed() {
+    QString labelText;
+
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + "log(");
+    }
+    else {
+        labelText = "log(";
+    }
+    toParse = toParse + "log(";
+    ui->lineEdit->setText(labelText);
+}
+
+void scientificWindow::lnPressed() {
+    QString labelText;
+
+    if(ui->lineEdit->text() != (QString)"0") {
+        labelText = ui->lineEdit->text() + "ln(");
+    }
+    else {
+        labelText = "ln(";
+    }
+    toParse = toParse + "ln(";
+    ui->lineEdit->setText(labelText);
 }
 
 void scientificWindow::piPressed() {
@@ -282,8 +401,7 @@ void scientificWindow::equalsPressed() {
     answer = mem.pushParse(answer);
 }
 
-void scientificWindow::on_lineEdit_returnPressed()
-{
+void scientificWindow::on_lineEdit_returnPressed() {
     //pops the text into a message box, in the future the string will be sent to be parsed
     QMessageBox::information(this, "This will be parsed", ui->lineEdit->text());
 }
