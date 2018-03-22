@@ -60,7 +60,7 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_parRight,SIGNAL(released()),this,SLOT(rightParPressed()));
     connect(ui->pushButton_decimal,SIGNAL(released()),this,SLOT(decimalPressed()));
     connect(ui->pushButton_sqrt,SIGNAL(released()),this,SLOT(sqrtPressed()));
-    connect(ui->pushButton_cbrt,SIGNAL(released()),this,SLOT(cbrtPressed()));
+    connect(ui->pushButton_mod,SIGNAL(released()),this,SLOT(modPressed()));
     connect(ui->pushButton_power,SIGNAL(released()),this,SLOT(powerPressed()));
     connect(ui->pushButton_exp,SIGNAL(released()),this,SLOT(expPressed()));
 
