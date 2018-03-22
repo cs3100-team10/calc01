@@ -1366,7 +1366,7 @@ QPushButton:hover{
     <string>cos</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_cbrt">
+  <widget class="QPushButton" name="pushButton_mod">
    <property name="geometry">
     <rect>
      <x>460</x>
@@ -1383,7 +1383,7 @@ QPushButton:hover{
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -1405,7 +1405,7 @@ QPushButton:hover{
 </string>
    </property>
    <property name="text">
-    <string> ∛</string>
+    <string>%</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_sqrt">

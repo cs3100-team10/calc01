@@ -37,14 +37,14 @@ private slots:
     void acosPressed();
     void atanPressed();
     void logPressed();
-    void lnPressed():
+    void lnPressed();
 
     void piPressed();
     void leftParPressed();
     void rightParPressed();
     void decimalPressed();
     void sqrtPressed();
-    void cbrtPressed();
+    void modPressed();
     void powerPressed();
     void expPressed();
 

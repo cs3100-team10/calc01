@@ -150,7 +150,7 @@ void scientificWindow::sinPressed() {
     QString labelText;
 
     if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + "sin(");
+        labelText = ui->lineEdit->text() + "sin(";
     }
     else {
         labelText = "sin(";
@@ -163,7 +163,7 @@ void scientificWindow::cosPressed() {
     QString labelText;
 
     if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + "cos(");
+        labelText = ui->lineEdit->text() + "cos(";
     }
     else {
         labelText = "cos(";
@@ -176,7 +176,7 @@ void scientificWindow::tanPressed() {
     QString labelText;
 
     if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + "tan(");
+        labelText = ui->lineEdit->text() + "tan(";
     }
     else {
         labelText = "tan(";
@@ -189,7 +189,7 @@ void scientificWindow::asinPressed() {
     QString labelText;
 
     if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + "asin(");
+        labelText = ui->lineEdit->text() + "asin(";
     }
     else {
         labelText = "asin(";
@@ -202,7 +202,7 @@ void scientificWindow::acosPressed() {
     QString labelText;
 
     if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + "acos(");
+        labelText = ui->lineEdit->text() + "acos(";
     }
     else {
         labelText = "acos(";
@@ -215,7 +215,7 @@ void scientificWindow::atanPressed() {
     QString labelText;
 
     if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + "atan(");
+        labelText = ui->lineEdit->text() + "atan(";
     }
     else {
         labelText = "atan(";
@@ -228,7 +228,7 @@ void scientificWindow::logPressed() {
     QString labelText;
 
     if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + "log(");
+        labelText = ui->lineEdit->text() + "log(";
     }
     else {
         labelText = "log(";
@@ -241,7 +241,7 @@ void scientificWindow::lnPressed() {
     QString labelText;
 
     if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + "ln(");
+        labelText = ui->lineEdit->text() + "ln(";
     }
     else {
         labelText = "ln(";
@@ -316,21 +316,21 @@ void scientificWindow::sqrtPressed() {
     else {
         labelText = sqrtUnicode;
     }
-    toParse = toParse + "sqrt"; //should be 'sqrt(' ?
+    toParse = toParse + "sqrt("; //should be 'sqrt(' ?
     ui->lineEdit->setText(labelText);
 }
 
-void scientificWindow::cbrtPressed() {
+void scientificWindow::modPressed() {
     QString labelText;
-    QString cbrtUnicode = QChar(0x221B);
+    QString modUnicode = QChar(0xFF05);
 
     if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + cbrtUnicode;
+        labelText = ui->lineEdit->text() + modUnicode;
     }
     else {
-        labelText = cbrtUnicode;
+        labelText = modUnicode;
     }
-    toParse = toParse + "cbrt"; //different?
+    toParse = toParse + "%"; //different?
     ui->lineEdit->setText(labelText);
 }
 
@@ -358,7 +358,7 @@ void scientificWindow::expPressed() {
     else {
         labelText = button->text();
     }
-
+    toParse = toParse + "e^(";
     ui->lineEdit->setText(labelText + "^(");
 }
 
