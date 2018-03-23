@@ -135,25 +135,23 @@ void MainWindow::equalsPressed() {
     QString str;
     string str1;
     //adds to memory if not blank
-    if (currentText != "") {
-        str = mem.push(currentText);
-        str1 = mem.pushParse(toParse);
-        ui->lineEdit->setText(str);
+    if (currentText != QString("")) {
+        ui->lineEdit->setText("");
+
+        double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
+        //.toStdString();
+
+        QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
+        ui->label_screen->setText(buttonText);
+        toParse = "";
+        string answer;
+        std::stringstream stre;
+        stre << answer << equalsAnswer;
+        answer = stre.str();
+        //push answer into memory
+        str = mem.push(buttonText);
+        answer = mem.pushParse(answer);
     }
-
-    double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
-    //.toStdString();
-
-    QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
-    ui->label_screen->setText(buttonText);
-    toParse = "";
-    string answer;
-    std::stringstream stre;
-    stre << answer << equalsAnswer;
-    answer = stre.str();
-    //push answer into memory
-    str = mem.push(buttonText);
-    answer = mem.pushParse(answer);
 }
 
 void MainWindow::on_lineEdit_returnPressed() {

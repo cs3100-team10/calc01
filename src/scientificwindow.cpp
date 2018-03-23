@@ -233,7 +233,7 @@ void scientificWindow::logPressed() {
     else {
         labelText = "log(";
     }
-    toParse = toParse + "log(";
+    toParse = toParse + "log10(";
     ui->lineEdit->setText(labelText);
 }
 
@@ -246,7 +246,7 @@ void scientificWindow::lnPressed() {
     else {
         labelText = "ln(";
     }
-    toParse = toParse + "ln(";
+    toParse = toParse + "log(";
     ui->lineEdit->setText(labelText);
 }
 
@@ -358,8 +358,8 @@ void scientificWindow::expPressed() {
     else {
         labelText = button->text();
     }
-    toParse = toParse + "e^(";
-    ui->lineEdit->setText(labelText + "^(");
+    toParse = toParse + "exp(";
+    ui->lineEdit->setText(labelText + "e^(");
 }
 
 void scientificWindow::upPressed() {
@@ -380,25 +380,23 @@ void scientificWindow::equalsPressed() {
     QString str;
     string str1;
     //adds to memory if not blank
-    if (currentText != "") {
-        QString str = mem.push(currentText); // will always return empty QString
-        str1 = mem.pushParse(toParse);
-        ui->lineEdit->setText(str);
+    if (currentText != QString("")) {
+        ui->lineEdit->setText("");
+
+        double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
+        //.toStdString();
+
+        QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
+        ui->label_screen->setText(buttonText);
+        toParse = "";
+        string answer;
+        std::stringstream stre;
+        stre << answer << equalsAnswer;
+        answer = stre.str();
+        //push answer into memory
+        str = mem.push(buttonText);
+        answer = mem.pushParse(answer);
     }
-
-    double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
-    //.toStdString();
-
-    QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
-    ui->label_screen->setText(buttonText);
-    toParse = "";
-    string answer;
-    std::stringstream stre;
-    stre << answer << equalsAnswer;
-    answer = stre.str();
-    //push answer into memory
-    str = mem.push(buttonText);
-    answer = mem.pushParse(answer);
 }
 
 void scientificWindow::on_lineEdit_returnPressed() {
@@ -486,7 +484,8 @@ void scientificWindow::plusMinusPressed() {
             labelText = labelText.remove(size-1,size);
 
             int sizeP = toParse.size();
-            toParse = toParse.substr(2,sizeP-1);
+            //toParse = toParse.substr(2,sizeP-1);
+            toParse = toParse.substr(2,sizeP-3); //Now the string cuts off the parenth at the end properly
         } else { //if not negated
             labelText = QString("-(") + labelText + QString(")");
             toParse = "-(" + toParse + ")";
