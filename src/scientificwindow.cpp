@@ -405,10 +405,8 @@ void scientificWindow::on_lineEdit_returnPressed() {
     string toBeParsed = ui->lineEdit->text().toStdString();
 
     //adds to memory if not blank
-    if (currentText != "") {
-        str = mem.push(currentText);
-        str1 = mem.pushParse(toBeParsed);
-        ui->lineEdit->setText(str);
+    if (currentText != QString("")) {
+        ui->lineEdit->setText("");
 
         double equalsAnswer = exprtk_parse(toBeParsed);
         QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
