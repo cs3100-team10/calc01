@@ -384,10 +384,8 @@ void scientificWindow::on_lineEdit_returnPressed() {
     string toBeParsed = ui->lineEdit->text().toStdString();
 
     //adds to memory if not blank
-    if (currentText != "") {
-        str = mem.push(currentText);
-        str1 = mem.pushParse(toBeParsed);
-        ui->lineEdit->setText(str);
+    if (currentText != QString("")) {
+        ui->lineEdit->setText("");
 
         //pops the text into a message box, in the future the string will be sent to be parsed
         //QMessageBox::information(this, "This will be parsed", ui->lineEdit->text());
