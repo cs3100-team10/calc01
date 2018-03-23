@@ -1,18 +1,19 @@
 #include "scientificwindow.h"
 #include "ui_scientificwindow.h"
-#include <sstream>
-#include "mainwindow.h"
-#include "exprtk_parse.h"
-#include "helpdialogsci.h"
-
-#include <QMessageBox>
+#include "mainwindow.h"         //used to allow calc to switch modes
+#include "exprtk_parse.h"       //parser
+#include "helpdialogsci.h"      //help dialog for scientific window
+#include <sstream>              //used to append ints to string
+//#include <QMessageBox>        //only used in testing
+//#include <QDebug>             //only used in testing
 
 scientificWindow::scientificWindow(QWidget *parent) :
     QDialog(parent), ui(new Ui::scientificWindow) {
     ui->setupUi(this);
-    ui->radioButton_radians->setChecked(true);
+    ui->radioButton_radians->setChecked(true);      //sci mode defaults to radians
     this->setWindowTitle("Scientific Calculator");
 
+    //digit button slots & signals
     connect(ui->pushButton_0zero,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_1one,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_2two,SIGNAL(released()),this, SLOT(digitPressed()));
@@ -24,54 +25,50 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_8eight,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_9nine,SIGNAL(released()),this, SLOT(digitPressed()));
 
+    //trig and special function slots & signals
     connect(ui->pushButton_sin,SIGNAL(released()),this, SLOT(sinPressed()));
-
     connect(ui->pushButton_cos,SIGNAL(released()),this, SLOT(cosPressed()));
-
     connect(ui->pushButton_tan,SIGNAL(released()),this, SLOT(tanPressed()));
-
     connect(ui->pushButton_asin,SIGNAL(released()),this, SLOT(asinPressed()));
-
     connect(ui->pushButton_acos,SIGNAL(released()),this, SLOT(acosPressed()));
-
     connect(ui->pushButton_atan,SIGNAL(released()),this, SLOT(atanPressed()));
-
     connect(ui->pushButton_log,SIGNAL(released()),this, SLOT(logPressed()));
-
     connect(ui->pushButton_ln,SIGNAL(released()),this, SLOT(lnPressed()));
-
-    connect(ui->pushButton_clear,SIGNAL(released()),this,SLOT(clearPressed()));
-
-    connect(ui->pushButton_back,SIGNAL(released()),this,SLOT(backPressed()));
-
-    connect(ui->pushButton_basicMode,SIGNAL(released()),this,SLOT(basicModePressed()));
-    connect(ui->pushButton_help,SIGNAL(released()),this,SLOT(helpPressed()));
-
-    connect(ui->pushButton_pi,SIGNAL(released()),this,SLOT(piPressed()));
-    connect(ui->pushButton_parLeft,SIGNAL(released()),this,SLOT(leftParPressed()));
-    connect(ui->pushButton_parRight,SIGNAL(released()),this,SLOT(rightParPressed()));
-    connect(ui->pushButton_decimal,SIGNAL(released()),this,SLOT(decimalPressed()));
     connect(ui->pushButton_sqrt,SIGNAL(released()),this,SLOT(sqrtPressed()));
     connect(ui->pushButton_mod,SIGNAL(released()),this,SLOT(modPressed()));
     connect(ui->pushButton_power,SIGNAL(released()),this,SLOT(powerPressed()));
     connect(ui->pushButton_exp,SIGNAL(released()),this,SLOT(expPressed()));
 
+    //mode switching/pop up window slots & signals
+    connect(ui->pushButton_basicMode,SIGNAL(released()),this,SLOT(basicModePressed()));
+    connect(ui->pushButton_help,SIGNAL(released()),this,SLOT(helpPressed()));
+
+    //operation character button slots & signals
+    connect(ui->pushButton_pi,SIGNAL(released()),this,SLOT(piPressed()));
+    connect(ui->pushButton_parLeft,SIGNAL(released()),this,SLOT(leftParPressed()));
+    connect(ui->pushButton_parRight,SIGNAL(released()),this,SLOT(rightParPressed()));
+    connect(ui->pushButton_decimal,SIGNAL(released()),this,SLOT(decimalPressed()));
+    connect(ui->pushButton_plusMinus,SIGNAL(released()),this, SLOT(plusMinusPressed()));
+
+    //memory related slots & signals
     connect(ui->pushButton_up, SIGNAL(released()), this, SLOT(upPressed()));
     connect(ui->pushButton_down, SIGNAL(released()), this, SLOT(downPressed()));
     connect(ui->pushButton_equals, SIGNAL(released()), this, SLOT(equalsPressed()));
+    connect(ui->pushButton_clear,SIGNAL(released()),this,SLOT(clearPressed()));
+    connect(ui->pushButton_back,SIGNAL(released()),this,SLOT(backPressed()));
 
+    //basic operation slots & signals
     connect(ui->pushButton_divide,SIGNAL(released()),this, SLOT(dividePressed()));
     connect(ui->pushButton_multiply,SIGNAL(released()),this, SLOT(multiplyPressed()));
     connect(ui->pushButton_subtract,SIGNAL(released()),this, SLOT(subtractPressed()));
     connect(ui->pushButton_add,SIGNAL(released()),this, SLOT(addPressed()));
-
-    connect(ui->pushButton_plusMinus,SIGNAL(released()),this, SLOT(plusMinusPressed()));
 }
 
 scientificWindow::~scientificWindow() {
     delete ui;
 }
 
+//when a digit button is pressed (0...9), append value to current display
 void scientificWindow::digitPressed() {
     QPushButton *button = (QPushButton*)sender();
     double buttonNumber = (button->text()).toDouble();
@@ -92,6 +89,7 @@ void scientificWindow::digitPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//clears screen & returns to beginning of memory
 void scientificWindow::clearPressed() {
     ui->lineEdit->setText((QString)"0");
     //reset to beginning of memory if in memory
@@ -100,6 +98,7 @@ void scientificWindow::clearPressed() {
     toParse = "";
 }
 
+//remove last digit or character from screen
 void scientificWindow::backPressed() {
     QString currentText = ui->lineEdit->text();
     int textLength = currentText.length();
@@ -111,18 +110,21 @@ void scientificWindow::backPressed() {
     toParse = toParse.substr(0,toParse.size()-1); //delete last char from parse string
 }
 
+//opens basic mode & closes scientific mode
 void scientificWindow::basicModePressed() {
     MainWindow *w = new MainWindow();
     w->show();
     this->close();
 }
 
+//opens help dialog on top of scientific mode
 void scientificWindow::helpPressed() {
     helpDialogSci *w = new helpDialogSci();
     w->show();
     //this->close();
 }
 
+//displays "sin(" on operation window & adds "sin(" to parsing string
 void scientificWindow::sinPressed() {
     QString labelText;
 
@@ -136,6 +138,7 @@ void scientificWindow::sinPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays "cos(" on operation window & adds "cos(" to parsing string
 void scientificWindow::cosPressed() {
     QString labelText;
 
@@ -149,6 +152,7 @@ void scientificWindow::cosPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays "tan(" on operation window & adds "tan(" to parsing string
 void scientificWindow::tanPressed() {
     QString labelText;
 
@@ -162,6 +166,7 @@ void scientificWindow::tanPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays "asin(" on operation window & adds "asin(" to parsing string
 void scientificWindow::asinPressed() {
     QString labelText;
 
@@ -175,6 +180,7 @@ void scientificWindow::asinPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays "acos(" on operation window & adds "acos(" to parsing string
 void scientificWindow::acosPressed() {
     QString labelText;
 
@@ -188,6 +194,7 @@ void scientificWindow::acosPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays "atan(" on operation window & adds "atan(" to parsing string
 void scientificWindow::atanPressed() {
     QString labelText;
 
@@ -201,6 +208,7 @@ void scientificWindow::atanPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays "log(" on operation window & adds "log10(" to parsing string
 void scientificWindow::logPressed() {
     QString labelText;
 
@@ -214,6 +222,7 @@ void scientificWindow::logPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays "ln(" on operation window & adds "log(" to parsing string
 void scientificWindow::lnPressed() {
     QString labelText;
 
@@ -227,6 +236,7 @@ void scientificWindow::lnPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode pi on operation window & adds "pi" to parsing string
 void scientificWindow::piPressed() {
     QString labelText;
     QString piUnicode = QChar(0x03C0);
@@ -241,6 +251,7 @@ void scientificWindow::piPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode '(' on operation window & adds "(" to parsing string
 void scientificWindow::leftParPressed() {
     QString labelText;
     QString leftParUnicode = QChar(0x0028);
@@ -255,6 +266,7 @@ void scientificWindow::leftParPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode '(' on operation window & adds ")" to parsing string
 void scientificWindow::rightParPressed() {
     QString labelText;
     QString rightParUnicode = QChar(0x0029);
@@ -269,6 +281,7 @@ void scientificWindow::rightParPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode '.' on operation window & adds "." to parsing string
 void scientificWindow::decimalPressed() {
     QString labelText;
     QString decimalUnicode = QChar(0x002E);
@@ -283,6 +296,7 @@ void scientificWindow::decimalPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode sqrt on operation window & adds "sqrt(" to parsing string
 void scientificWindow::sqrtPressed() {
     QString labelText;
     QString sqrtUnicode = QChar(0x221A);
@@ -293,10 +307,11 @@ void scientificWindow::sqrtPressed() {
     else {
         labelText = sqrtUnicode;
     }
-    toParse = toParse + "sqrt("; //should be 'sqrt(' ?
+    toParse = toParse + "sqrt(";
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode % on operation window & adds "%" to parsing string
 void scientificWindow::modPressed() {
     QString labelText;
     QString modUnicode = QChar(0xFF05);
@@ -307,10 +322,11 @@ void scientificWindow::modPressed() {
     else {
         labelText = modUnicode;
     }
-    toParse = toParse + "%"; //different?
+    toParse = toParse + "%";
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode ^ on operation window & adds "^" to parsing string
 void scientificWindow::powerPressed() {
     QString labelText;
     QString powerUnicode = QChar(0x2303);
@@ -325,6 +341,7 @@ void scientificWindow::powerPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays "e^(" on operation window & adds "exp(" to parsing string
 void scientificWindow::expPressed() {
     QPushButton *button = (QPushButton*)sender();
     QString labelText;
@@ -339,18 +356,21 @@ void scientificWindow::expPressed() {
     ui->lineEdit->setText(labelText + "e^(");
 }
 
+//walks to previous entry in memory and displays it on screen
 void scientificWindow::upPressed() {
     QString str = mem.up();
     ui->lineEdit->setText(str);
     toParse = mem.upParse();
 }
 
+//walks to next entry in memory and displays in the screen
 void scientificWindow::downPressed() {
     QString str = mem.down();
     ui->lineEdit->setText(str);
     toParse = mem.downParse();
 }
 
+//calculates answer using parser, clears parse string, stores answer in memory and displays
 void scientificWindow::equalsPressed() {
     //removes empty node values if any exist
     QString currentText = ui->lineEdit->text();
@@ -360,7 +380,7 @@ void scientificWindow::equalsPressed() {
     if (currentText != QString("")) {
         ui->lineEdit->setText("");
 
-        double equalsAnswer = exprtk_parse(toParse); //.toLocal8Bit().constData()); // .toLocal8Bit().constData()
+        double equalsAnswer = exprtk_parse(toParse);
         //.toStdString();
 
         QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
@@ -376,6 +396,7 @@ void scientificWindow::equalsPressed() {
     }
 }
 
+//works as 'equalsPressed' function when 'enter' is pressed on keyboard
 void scientificWindow::on_lineEdit_returnPressed() {
     //removes empty node values if any exist
     QString currentText = ui->lineEdit->text();
@@ -389,23 +410,21 @@ void scientificWindow::on_lineEdit_returnPressed() {
         str1 = mem.pushParse(toBeParsed);
         ui->lineEdit->setText(str);
 
-        //pops the text into a message box, in the future the string will be sent to be parsed
-        //QMessageBox::information(this, "This will be parsed", ui->lineEdit->text());
+        double equalsAnswer = exprtk_parse(toBeParsed);
+        QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
+        ui->label_screen->setText(buttonText);
 
-         double equalsAnswer = exprtk_parse(toBeParsed);
-         QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
-         ui->label_screen->setText(buttonText);
-
-         string answer;
-         std::stringstream stre;
-         stre << answer << equalsAnswer;
-         answer = stre.str();
-         //push answer into memory
-         str = mem.push(buttonText);
-         answer = mem.pushParse(answer);
+        string answer;
+        std::stringstream stre;
+        stre << answer << equalsAnswer;
+        answer = stre.str();
+        //push answer into memory
+        str = mem.push(buttonText);
+        answer = mem.pushParse(answer);
      }
 }
 
+//displays unicode divide on operation window & adds "\" to parsing string
 void scientificWindow::dividePressed() {
     QString labelText;
     QString divideUnicode = QString("÷");
@@ -423,6 +442,7 @@ void scientificWindow::dividePressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode multiply on operation window & adds "*" to parsing string
 void scientificWindow::multiplyPressed() {
     QString labelText;
     QString multiplyUnicode = QChar(0x002A);
@@ -440,6 +460,7 @@ void scientificWindow::multiplyPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode addition on operation window & adds "+" to parsing string
 void scientificWindow::addPressed() {
     QString labelText;
     QString addUnicode = QChar(0x002B);
@@ -457,6 +478,7 @@ void scientificWindow::addPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode minus on operation window & adds "-" to parsing string
 void scientificWindow::subtractPressed() {
     QString labelText;
     QString subtractUnicode = QChar(0x002D);
@@ -474,6 +496,7 @@ void scientificWindow::subtractPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//checks status of current value and negates it
 void scientificWindow::plusMinusPressed() {
     QString labelText;
 
