@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle("Basic Calculator");
     MemStorage mem;
 
+    //digit button slots & signals
     connect(ui->pushButton_0zero,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_1one,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_2two,SIGNAL(released()),this, SLOT(digitPressed()));
@@ -24,24 +25,24 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_8eight,SIGNAL(released()),this, SLOT(digitPressed()));
     connect(ui->pushButton_9nine,SIGNAL(released()),this, SLOT(digitPressed()));
 
-    connect(ui->pushButton_clear,SIGNAL(released()),this,SLOT(clearPressed()));
-
-    connect(ui->pushButton_back,SIGNAL(released()),this,SLOT(backPressed()));
-
+    //mode switching/pop up window slots & signals
     connect(ui->pushButton_sciMode,SIGNAL(released()),this,SLOT(sciModePressed()));
     connect(ui->pushButton_help,SIGNAL(released()),this,SLOT(helpPressed()));
 
+    //memory related slots & signals
     connect(ui->pushButton_up,SIGNAL(released()),this,SLOT(upPressed()));
-
     connect(ui->pushButton_down,SIGNAL(released()),this,SLOT(downPressed()));
-
+    connect(ui->pushButton_clear,SIGNAL(released()),this,SLOT(clearPressed()));
+    connect(ui->pushButton_back,SIGNAL(released()),this,SLOT(backPressed()));
     connect(ui->pushButton_equals,SIGNAL(released()),this,SLOT(equalsPressed()));
 
+    //basic operation slots & signals
     connect(ui->pushButton_divide,SIGNAL(released()),this, SLOT(dividePressed()));
     connect(ui->pushButton_multiply,SIGNAL(released()),this, SLOT(multiplyPressed()));
     connect(ui->pushButton_subtract,SIGNAL(released()),this, SLOT(subtractPressed()));
     connect(ui->pushButton_add,SIGNAL(released()),this, SLOT(addPressed()));
 
+    //operation character button slots & signals
     connect(ui->pushButton_decimal,SIGNAL(released()),this, SLOT(decimalPressed()));
 }
 
@@ -49,11 +50,11 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+//when a digit button is pressed (0...9), append value to current display
 void MainWindow::digitPressed() {
     QPushButton *button = (QPushButton*)sender();
     double buttonNumber = (button->text()).toDouble();
     QString labelText;
-
     QString buttonText = QString::number(buttonNumber,'g',15); // 15 is the current double precision
 
     if(ui->lineEdit->text() != (QString)"0") {
@@ -72,6 +73,7 @@ void MainWindow::digitPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//clears screen & returns to beginning of memory
 void MainWindow::clearPressed() {
     ui->lineEdit->setText((QString)"0");
     //reset to beginning of memory if in memory
@@ -80,6 +82,7 @@ void MainWindow::clearPressed() {
     toParse = "";
 }
 
+//remove last digit or character from screen
 void MainWindow::backPressed() {
     QString currentText = ui->lineEdit->text();
     int textLength = currentText.length();
@@ -91,30 +94,35 @@ void MainWindow::backPressed() {
     toParse = toParse.substr(0,toParse.size()-1); //delete last char from parse string
 }
 
+//opens sci mode & closes basic mode
 void MainWindow::sciModePressed() {
     scientificWindow *w = new scientificWindow();
     w->show();
     this->close();
 }
 
+//opens help dialog on top of basic mode
 void MainWindow::helpPressed() {
     helpDialogBasic *w = new helpDialogBasic();
     w->show();
     //this->close();
 }
 
+//walks to previous entry in memory and displays it on screen
 void MainWindow::upPressed() {
     QString str = mem.up();
     toParse = mem.upParse();
     ui->lineEdit->setText(str);
 }
 
+//walks to next entry in memory and displays in the screen
 void MainWindow::downPressed() {
     QString str = mem.down();
     toParse = mem.downParse();
     ui->lineEdit->setText(str);
 }
 
+//displays unicode '.' on operation window & adds "." to parsing string
 void MainWindow::decimalPressed() {
     QString labelText;
     QString decimalUnicode = QChar(0x002E);
@@ -129,6 +137,7 @@ void MainWindow::decimalPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//calculates answer using parser, clears parse string, stores answer in memory and displays
 void MainWindow::equalsPressed() {
     //removes empty node values if any exist
     QString currentText = ui->lineEdit->text();
@@ -154,6 +163,7 @@ void MainWindow::equalsPressed() {
     }
 }
 
+//works as 'equalsPressed' function when 'enter' is pressed on keyboard
 void MainWindow::on_lineEdit_returnPressed() {
     //removes empty node values if any exist
     QString currentText = ui->lineEdit->text();
@@ -182,6 +192,7 @@ void MainWindow::on_lineEdit_returnPressed() {
     }
 }
 
+//displays unicode divide on operation window & adds "\" to parsing string
 void MainWindow::dividePressed() {
     QString labelText;
     QString divideUnicode = QString("÷");
@@ -199,6 +210,7 @@ void MainWindow::dividePressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode multiply on operation window & adds "*" to parsing string
 void MainWindow::multiplyPressed() {
     QString labelText;
     QString multiplyUnicode = QChar(0x002A);
@@ -216,6 +228,7 @@ void MainWindow::multiplyPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode addition on operation window & adds "+" to parsing string
 void MainWindow::addPressed() {
     QString labelText;
     QString addUnicode = QChar(0x002B);
@@ -233,6 +246,7 @@ void MainWindow::addPressed() {
     ui->lineEdit->setText(labelText);
 }
 
+//displays unicode minus on operation window & adds "-" to parsing string
 void MainWindow::subtractPressed() {
     QString labelText;
     QString subtractUnicode = QChar(0x002D);
