@@ -28,8 +28,6 @@ private slots:
     void backPressed();
     void basicModePressed();
     void helpPressed();
-    void parFuncPressed();
-
     void sinPressed();
     void cosPressed();
     void tanPressed();

@@ -25,28 +25,20 @@ scientificWindow::scientificWindow(QWidget *parent) :
     connect(ui->pushButton_9nine,SIGNAL(released()),this, SLOT(digitPressed()));
 
     connect(ui->pushButton_sin,SIGNAL(released()),this, SLOT(sinPressed()));
-    //connect(ui->pushButton_sin,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_cos,SIGNAL(released()),this, SLOT(cosPressed()));
-    //connect(ui->pushButton_cos,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_tan,SIGNAL(released()),this, SLOT(tanPressed()));
-    //connect(ui->pushButton_tan,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_asin,SIGNAL(released()),this, SLOT(asinPressed()));
-    //connect(ui->pushButton_asin,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_acos,SIGNAL(released()),this, SLOT(acosPressed()));
-    //connect(ui->pushButton_acos,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_atan,SIGNAL(released()),this, SLOT(atanPressed()));
-    //connect(ui->pushButton_atan,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_log,SIGNAL(released()),this, SLOT(logPressed()));
-    //connect(ui->pushButton_log,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_ln,SIGNAL(released()),this, SLOT(lnPressed()));
-    //connect(ui->pushButton_ln,SIGNAL(released()),this, SLOT(parFuncPressed()));
 
     connect(ui->pushButton_clear,SIGNAL(released()),this,SLOT(clearPressed()));
 
@@ -129,21 +121,6 @@ void scientificWindow::helpPressed() {
     helpDialogSci *w = new helpDialogSci();
     w->show();
     //this->close();
-}
-
-void scientificWindow::parFuncPressed() { // might need work
-    QPushButton *button = (QPushButton*)sender();
-    QString labelText;
-
-    if(ui->lineEdit->text() != (QString)"0") {
-        labelText = ui->lineEdit->text() + button->text();
-    }
-    else {
-        labelText = button->text();
-    }
-
-    //toParse = toParse + button->text().toStdString(); // work??
-    ui->lineEdit->setText(labelText + "(");
 }
 
 void scientificWindow::sinPressed() {
@@ -400,8 +377,33 @@ void scientificWindow::equalsPressed() {
 }
 
 void scientificWindow::on_lineEdit_returnPressed() {
-    //pops the text into a message box, in the future the string will be sent to be parsed
-    QMessageBox::information(this, "This will be parsed", ui->lineEdit->text());
+    //removes empty node values if any exist
+    QString currentText = ui->lineEdit->text();
+    QString str;
+    string str1;
+    string toBeParsed = ui->lineEdit->text().toStdString();
+
+    //adds to memory if not blank
+    if (currentText != "") {
+        str = mem.push(currentText);
+        str1 = mem.pushParse(toBeParsed);
+        ui->lineEdit->setText(str);
+
+        //pops the text into a message box, in the future the string will be sent to be parsed
+        //QMessageBox::information(this, "This will be parsed", ui->lineEdit->text());
+
+         double equalsAnswer = exprtk_parse(toBeParsed);
+         QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
+         ui->label_screen->setText(buttonText);
+
+         string answer;
+         std::stringstream stre;
+         stre << answer << equalsAnswer;
+         answer = stre.str();
+         //push answer into memory
+         str = mem.push(buttonText);
+         answer = mem.pushParse(answer);
+     }
 }
 
 void scientificWindow::dividePressed() {
