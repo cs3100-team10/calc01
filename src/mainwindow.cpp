@@ -156,10 +156,33 @@ void MainWindow::equalsPressed() {
     answer = mem.pushParse(answer);
 }
 
-void MainWindow::on_lineEdit_returnPressed()
-{
+void MainWindow::on_lineEdit_returnPressed() {
+    //removes empty node values if any exist
+    QString currentText = ui->lineEdit->text();
+    QString str;
+    string str1;
+    string toBeParsed = ui->lineEdit->text().toStdString();
+
+    //adds to memory if not blank
+    if (currentText != "") {
+        str = mem.push(currentText);
+        str1 = mem.pushParse(toBeParsed);
+        ui->lineEdit->setText(str);
+    }
     //pops the text into a message box, in the future the string will be sent to be parsed
-    QMessageBox::information(this, "This will be parsed", ui->lineEdit->text());
+    //QMessageBox::information(this, "This will be parsed", ui->lineEdit->text());
+
+     double equalsAnswer = exprtk_parse(toBeParsed);
+     QString buttonText = QString::number(equalsAnswer,'g',15); // 15 is the current double precision
+     ui->label_screen->setText(buttonText);
+
+     string answer;
+     std::stringstream stre;
+     stre << answer << equalsAnswer;
+     answer = stre.str();
+     //push answer into memory
+     str = mem.push(buttonText);
+     answer = mem.pushParse(answer);
 }
 
 void MainWindow::dividePressed() {
