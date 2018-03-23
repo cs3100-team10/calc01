@@ -7,11 +7,11 @@ helpDialogSci::helpDialogSci(QWidget *parent) :
     this->setWindowTitle("Scientific Help Dialog");
 
     connect(ui->pushButton_exit,SIGNAL(released()),this,SLOT(exitPressed()));
-
 }
 
-helpDialogSci::~helpDialogSci()
-{
+//basic dialog functionality
+
+helpDialogSci::~helpDialogSci() {
     delete ui;
 }
 

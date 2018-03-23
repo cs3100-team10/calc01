@@ -7,11 +7,11 @@ helpDialogBasic::helpDialogBasic(QWidget *parent) :
     this->setWindowTitle("Basic Help Dialog");
 
     connect(ui->pushButton_exit,SIGNAL(released()),this,SLOT(exitPressed()));
-
 }
 
-helpDialogBasic::~helpDialogBasic()
-{
+//basic dialog functionality
+
+helpDialogBasic::~helpDialogBasic() {
     delete ui;
 }
 
